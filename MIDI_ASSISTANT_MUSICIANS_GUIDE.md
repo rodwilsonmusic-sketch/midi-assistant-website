@@ -2,12 +2,22 @@
 
 ## What Is MIDI Assistant?
 
-**MIDI Assistant** is your backstage helper for Apple MainStage. It sits between your controllers (like Lemur on iPad or a Launch Control XL) and MainStage, giving you superpowers that MainStage doesn't have on its own:
+**MIDI Assistant** is your backstage helper for Apple MainStage — a Mac app, an AUv3 plugin, and a companion iPad Remote that work together to give you superpowers MainStage doesn't have on its own:
 
-- 🎹 **Complex MIDI Automation** – Send sequences of MIDI commands with a single button press
-- ⏱️ **Perfect Timing** – Synchronize events to your master tempo for flawless transitions
-- 🔀 **Smart Routing** – Route MIDI between controllers without rewiring anything in MainStage
-- 📱 **Better Controller Integration** – Make any MIDI controller work exactly how you want
+- 🎹 **Complex MIDI Automation** – Fire sequences of MIDI events with a single button press
+- 🎚️ **A Real Mixer Console** – A dedicated, fully customizable fader-and-matrix control surface for your whole rig
+- 🔀 **Smart Routing** – Route and rename MIDI between controllers without rewiring anything in MainStage
+- 📱 **A Live Performance Surface** – Run the whole show from an iPad, in perfect sync with the Mac
+
+---
+
+## The Three Pieces
+
+| Piece | What it's for |
+| --- | --- |
+| **MIDI Assistant (Mac app)** | Where you build your rig: the Mixer, the Concert Editor, MIDI Routing, and Capture/Catalog tools. |
+| **AUv3 Plugin (Host FX Mode)** | Loads directly into a MainStage channel strip so MIDI Assistant's processing runs alongside your instruments, sample-accurate, inside MainStage itself. |
+| **iPad Remote** | The surface you actually touch on stage — four interchangeable layouts, always in sync with the Mac. |
 
 ---
 
@@ -17,117 +27,53 @@
 
 **The Problem:** Changing from your verse sound to your chorus sound requires hitting multiple buttons, changing patch, adjusting volume faders, and hoping you time it right.
 
-**The Solution:** With MIDI Assistant, you map a single button on your iPad (via Lemur) to trigger a "Chorus" section. When you tap it:
+**The Solution:** Tap a single Section button — on the Mac or the iPad Remote — and MIDI Assistant fires the whole cued sequence: program changes, fader ramps, patch swaps, all at once.
 
-- MainStage instantly receives the program change
-- A volume fade-in for your strings starts automatically
-- Synth pads crossfade to the new patch
-- Everything happens perfectly on the next downbeat
+### 2. Tempo-Synced Transitions
 
-### 2. Tempo-Synced Effects
+**The Problem:** You want a filter sweep or volume fade that takes exactly 2 bars, every time, regardless of tempo — and you don't want it to jump when it starts.
 
-**The Problem:** You want a filter sweep that takes exactly 2 bars, every time, regardless of your tempo.
-
-**The Solution:** Define a `parameter_ramp` event:
-
-```
-Fade control #7 (volume) from 0 to 127 over 2 bars
-```
-
-MIDI Assistant calculates the exact timing based on your live tempo and executes it perfectly.
+**The Solution:** Convert a fader event to a **Dynamic Ramp**. MIDI Assistant reads the *actual current value* of the parameter and ramps smoothly from there to your target, timed in Bars, Beats, or Seconds, using Linear, Exponential, Logarithmic, or S-Curve shaping. No jump, no manual retiming when the tempo changes.
 
 ### 3. Controller Name Freedom
 
 **The Problem:** MainStage knows your controller as "Network Session 1" or "Launch Control XL" and you can't rename it. Your mapping list becomes confusing.
 
-**The Solution:** MIDI Assistant creates a virtual port with any name you want (like "Lemur Main" or "Pad Controller") and routes your controller through it. MainStage sees the friendly name you chose.
+**The Solution:** MIDI Assistant creates a virtual port with any name you want and routes your controller through it via a **Namespace** — a logical tag like `Lead Synth` instead of a raw channel number. Swap the physical keyboard later, and you re-point one Namespace instead of hunting down every mapping.
 
 ---
 
-## How It Works (The Simple Version)
+## Key Concepts
 
-```
- Your Controllers          MIDI Assistant           MainStage
- ┌─────────────┐          ┌────────────┐          ┌──────────┐
- │   iPad      │   ───▶   │  Listens   │   ───▶   │ Receives │
- │  (Lemur)    │          │  Routes    │          │  Clean   │
- │             │   ◀───   │  Filters   │   ◀───   │  MIDI    │
- └─────────────┘          │  Triggers  │          └──────────┘
-                          └────────────┘
-```
+### 🎵 Scenes, Sections & Master Patches
 
-1. **You tap a button** on Lemur (or any controller)
-2. **MIDI Assistant receives the message** and decides what to do
-3. **It sends the right commands** to MainStage at the perfect time
-4. **MainStage responds** exactly as you've configured
-
----
-
-## Key Features for Musicians
-
-### 🎵 Patches & Sections
-
-Think of **Patches** as songs and **Sections** as parts of a song (Intro, Verse, Chorus, etc.).
-
-Each section can have its own MIDI events:
-
-- Program changes to switch sounds
-- Control changes to adjust parameters
-- Even complex multi-step automations
+Think of a **Scene** as a song, and its **Sections** as the parts of that song (Intro, Verse, Chorus, etc.). Each Scene also carries a **Master Patch** — the actual MainStage or external-synth program it loads — plus its own list of MIDI events per Section.
 
 ### 🎛️ Presets
 
-**Presets** are reusable configurations primarily used for effects plugins. Unlike patches (which represent entire songs), presets let you define and recall specific parameter settings for individual plugins or channel strips.
-
-Use presets when you want to:
+**Presets** are reusable event bundles, most often used for plugin/effect settings. Unlike a Scene (a whole song), a Preset is a portable chunk you can drop into any Section.
 
 - Store your favorite reverb settings and recall them across multiple songs
-- Define effect configurations that can be triggered independently
-- See all the parameters for a plugin in one place and switch between saved states
-- Share common settings between different patches without duplicating data
+- Trigger a Preset independently, or attach it to a button's ON/OFF actions
+- Right-click a Preset in the Concert Editor and choose **Add to Current Section** to copy its events straight into the Section you're working on
 
-**Example:** You might have reverb presets like "Hall Large", "Plate Bright", and "Ambient Wash" that can be called from any patch in your concert.
+### 🖥️ The Mixer & SubScreens
 
-### ⏰ Quantized Triggers
+The **Mixer Console** is your main control deck — faders, a button matrix, and top/side utility buttons, all built dynamically from your Concert. When a rig has more depth than fits on one screen (32 Omnisphere matrix buttons, 40 organ drawbars), that complexity lives in a **SubScreen** — its own isolated control surface, reachable by pressing and holding (or right-clicking) a fader's name label.
 
-**"Next Measure" mode** ensures your transitions always land on the downbeat:
+Need quick access to one deeply-nested SubScreen control without leaving the main Mixer? Create a **Ghost Control** — a lightweight reference that mirrors the original control's value, label, and behavior automatically.
 
-1. You tap the button anytime during a bar
-2. MIDI Assistant waits for beat 1 of the next measure
-3. Your change happens perfectly in time
+### 🎯 Radio Groups & Momentary Buttons
 
-### 🔧 Routing Profiles
+Buttons default to **Toggle** (latching) behavior. Flip a button to **Momentary** for stutter effects or drum-pad style hits that only fire while held. Give several buttons the same **Radio Group**, and pressing one automatically turns the others off — perfect for "only one patch active at a time" selections.
 
-Different gigs? Different setups? No problem.
+### 🎚️ Soft Takeover
 
-Create multiple **routing profiles** for different scenarios:
+Moving a scene to a new state can leave a physical (non-motorized) fader pointing at the wrong value. **Soft Takeover** prevents the jump: in **Pickup** mode the fader has to physically cross the current value before it takes control again; in **Proportional** mode it scales your movement so it catches up smoothly instead.
 
-- **"Club Gig"** – Minimal setup, just iPad
-- **"Full Band"** – iPad + Launch Control XL + external MIDI keyboard
-- **"Recording Session"** – All MIDI routed through IAC for DAW capture
-- **"Spontaneous Worship / Free Flow"** – Enhanced MIDI control for improvisation sessions where sound color palettes must shift smoothly and dramatically
+### 🎼 The Legato Engine
 
-Switch profiles instantly without touching MainStage.
-
-#### Deep Dive: Spontaneous Worship Profile
-
-This advanced profile supports rich, layered orchestration with 5-6 Omnisphere channel strips plus arrays of other software synths—all hosted in MainStage automation patches. MIDI Assistant works in concert with MainStage Scripter plugins to enable intelligent note routing:
-
-**Intelligent Note Distribution:**
-
-- **Bass Channel Strips** – Only receive the lowest played notes for rich, foundational bass
-- **Lead Channel Strips** – Only receive the highest notes for impactful leads and top-end sparkle
-- **Pad/Texture Strips** – Handle mid-range notes for lush harmonic support
-
-**Breakpoint Transposition:**
-
-Some sounds become harsh when played too high, or muddy when played too low. MIDI Assistant controls _breakpoint thresholds_ that automatically transpose notes to keep each instrument in its optimal range:
-
-> **Example:** Your strings sound shrill above C5. As the worship leader plays higher leads, MIDI Assistant signals the Scripter to transpose those notes down an octave—so the strings still contribute warmth instead of being muted entirely.
-
-> **Example:** Your bass synth loses definition below E1. When the pianist plays low chord voicings, MIDI Assistant transposes the bass part up an octave to stay punchy and audible.
-
-When you switch patches or sections, MIDI Assistant sends commands that update these breakpoints dynamically—allowing your sound palette to evolve throughout the worship flow without manual intervention.
+Changing scenes mid-chord shouldn't cut your sustain dead. MIDI Assistant's Legato Engine keeps the old patch sounding until you actually release those notes, then cleans up automatically — no special playing technique required.
 
 ---
 
@@ -135,29 +81,33 @@ When you switch patches or sections, MIDI Assistant sends commands that update t
 
 ### What You'll Need
 
-1. **Your Mac** running MainStage
-2. **MIDI Assistant** running in the background
-3. **Your controllers** (Lemur, Launch Control XL, etc.)
-4. **A few minutes** to set up your routing
+1. **MIDI Assistant** installed on your Mac (macOS 13 or later)
+2. **MainStage**, with the MIDI Assistant AUv3 plugin loaded on a channel strip (Host FX Mode) if you want sample-accurate in-host control
+3. **MIDI Assistant Remote** on your iPad, on the same local network as your Mac
+4. **Your controllers** (Lemur, Launch Control XL, hardware keyboards, etc.)
 
 ### Quick Start
 
-1. **Open MIDI Assistant** from Terminal:
+1. **Open MIDI Assistant** on your Mac.
+2. **Open the MIDI Routing window** and set up your virtual ports and hardware interceptions — this is where physical controllers get routed and (optionally) renamed via Namespaces.
+3. **Open MIDI Assistant Remote** on your iPad; it connects to the Mac automatically over your local network.
+4. **Build your first Concert** in the Concert Editor: add a Scene, rename `Section 1` to something real (`Intro`), and set a Master Patch trigger so the right sound loads with it.
+5. **Switch to the Performance Hub** (Mac) or the Remote's **Full (Stage)** or **Mixer (LaunchCtrl)** layout to run the show live.
 
-   ```
-   swift run MidiAssistant
-   ```
+---
 
-2. **Verify your ports** are detected (you'll see a list of all MIDI inputs/outputs)
+## The iPad Remote: Four Ways to Look at the Same Show
 
-3. **Configure your routing** in the `midi_routing.json` file
+Switch layouts from the toolbar's mode menu — no reconnecting, no lost state:
 
-4. **Open MainStage** and configure it to receive from the virtual ports MIDI Assistant creates
+| Mode | Use it when… |
+| --- | --- |
+| **Compact (Lemur)** | You want the smallest footprint alongside other apps. |
+| **Full (Stage)** | The iPad *is* the show — big touch targets, big labels. |
+| **Setlist Only** | You just need to pick the next song. |
+| **Mixer (LaunchCtrl)** | You want the fader-grid mixer, iPad-side. |
 
-5. **Test with MIDISnoop** to make sure messages are flowing:
-   ```
-   swift run MIDISnoop
-   ```
+Tap a Section pill to jump straight to it. Tap the Scene name for a menu of every Scene and Section — a direct jump from anywhere to anywhere. If a Section has a duration, tap its progress bar to pause or resume the countdown.
 
 ---
 
@@ -165,64 +115,20 @@ When you switch patches or sections, MIDI Assistant sends commands that update t
 
 ### Before the Gig
 
-1. **Create your concert JSON** with all patches and sections
-2. **Define events** for each section transition
-3. **Set your routing profile** for the venue
+1. **Build or update your Concert** in the Concert Editor — Scenes, Sections, Master Patch triggers.
+2. **Dial in your rig's routing profile** for the venue (a simple solo setup vs. a full band rig with multiple controllers).
+3. **Use Ad-Hoc Capture** to grab a perfect soundcheck balance straight into a Section, instead of hand-typing every fader value.
 
 ### During the Gig
 
-1. **Launch MIDI Assistant** (or have it auto-launch)
-2. **Open your MainStage concert**
-3. **Control everything from your iPad** via Lemur OSC triggers
-4. **Hit your section buttons** and let the magic happen
+1. **Launch MIDI Assistant** on the Mac; open MainStage.
+2. **Run the show from the Performance Hub** (Mac) or the **iPad Remote** — whichever surface you're actually standing behind.
+3. **Hit your Section buttons** and let the Legato Engine, Dynamic Ramps, and Soft Takeover handle the details.
 
 ### After the Gig
 
-1. **Save any new mappings** you want to keep
-2. **Review the log files** if anything went wrong
-3. **Update your concert file** for next time
-
----
-
-## The Lemur Connection
-
-MIDI Assistant works beautifully with **Lemur** on iPad:
-
-- **OSC commands** trigger patches and sections
-- **Bidirectional feedback** keeps your Lemur UI updated
-- **Array messages** let you send batch commands efficiently
-
-Example OSC message from Lemur:
-
-```
-/triggerSection patch_A01 2
-```
-
-This tells MIDI Assistant: "In patch A01, trigger section 2 (maybe the Chorus)."
-
----
-
-## Understanding Your Configuration
-
-Your setup lives in JSON files. Here's what matters:
-
-### `config.json` – General Settings
-
-- OSC port for Lemur communication
-- Default MIDI ports
-- Master clock port (`master_clock_port`)
-
-### `midi_routing.json` – Port Routing
-
-- Which controllers to intercept
-- Virtual port names
-- Routing profiles
-
-### `patches.json` – Your Music
-
-- Patches (songs) and sections
-- BPM and meter per patch
-- MIDI events for each section
+1. **Save any on-the-fly Ad-Hoc Presets** you want to keep.
+2. **Review anything that felt off** — a Section that ran long, a fader that jumped — and adjust.
 
 ---
 
@@ -230,68 +136,70 @@ Your setup lives in JSON files. Here's what matters:
 
 ### 1. Always Test Before the Gig
 
-Run `MIDISnoop` while pressing buttons to verify everything is connected properly.
+Play through your setlist end to end with the actual rig connected, not just on the bench.
 
 ### 2. Use Descriptive Names
 
-Name your sections "Intro", "Verse 1", "Chorus" – not "Section1", "Section2". Your future self will thank you.
+Name your Sections "Intro", "Verse 1", "Chorus" — not "Section 1", "Section 2". Your future self will thank you.
 
 ### 3. Start Simple
 
-Get basic routing working before adding complex automations. Build up your system gradually.
+Get basic routing and one Scene working before layering on Ramps, Ghost Controls, and SubScreens. Build up gradually.
 
-### 4. Keep Backups
+### 4. Capture Instead of Retyping
 
-Your JSON files are your setup. Keep them in version control (like the Git repo this project uses) so you can roll back if needed.
+If a mix sounds perfect at soundcheck, use **Snapshot → Save Ad-Hoc Preset** rather than hand-entering thirty CC values.
 
-### 5. Quantize for Safety
+### 5. Lean on Dynamic Ramps for Safety
 
-If timing is critical, use `next_measure` quantization. It's like a safety net that ensures your transitions are always musical.
+A ramp always starts from the fader's *real* current position — it can't jump, even if the previous Section left things in an unexpected state.
 
 ---
 
 ## Troubleshooting
 
-### "I'm not seeing my controller"
+### "My iPad isn't syncing with the Mac"
 
-- Check that IAC Driver is enabled in Audio MIDI Setup
-- For network MIDI (Lemur), ensure the Network Session is configured
-- Restart MIDI Assistant after connecting new devices
+- Confirm both devices are on the same local Wi-Fi network (or a stable wired/ad-hoc connection).
+- Check macOS's local-network permission prompt for MIDI Assistant hasn't been dismissed as Deny.
 
-### "My messages aren't reaching MainStage"
+### "My hardware fader jumped when I changed scenes"
 
-- Run `MIDISnoop` to see if messages are being received
-- Check that the virtual port is created (look in Audio MIDI Setup)
-- Verify MainStage is configured to receive from the correct port
+- Turn on **Soft Takeover** for that port in the MIDI Routing window, and pick Pickup or Proportional depending on feel.
 
-### "Timing feels wrong"
+### "A fader feels noisy or twitchy when I'm not touching it"
 
-- Make sure you're using external sync if playing with a drummer/track
-- Verify the `bpm` in your patch matches your actual tempo
-- Check that `master_clock_port` is configured correctly
+- That's electrical jitter from the analog control. The **Jitter Lock Filter** handles this automatically, but check the port's routing settings if it still seems too sensitive or too sluggish.
+
+### "Host FX Mode in MainStage isn't responding"
+
+- Confirm the AUv3 plugin is loaded on the correct channel strip and that its Processing Mode is set to **Host FX** rather than **Hub Processing** in the Performance Hub.
 
 ---
 
 ## Glossary
 
-| Term             | Meaning                                                |
-| ---------------- | ------------------------------------------------------ |
-| **Patch**        | A song or piece in your set                            |
-| **Section**      | A part of a patch (Intro, Verse, etc.)                 |
-| **Preset**       | Saved plugin/effect settings that can be recalled      |
-| **Virtual Port** | A MIDI port created by software, not hardware          |
-| **OSC**          | Open Sound Control – how Lemur talks to MIDI Assistant |
-| **Profile**      | A saved routing configuration for different setups     |
-| **Quantize**     | Timing adjustment to align with musical beats          |
-| **IAC Driver**   | macOS's Inter-Application Communication MIDI bus       |
+| Term | Meaning |
+| --- | --- |
+| **Concert** | Your full setlist — every Scene, Section, and mapping for a show. |
+| **Scene** | A song in your setlist. |
+| **Section** | A part of a Scene (Intro, Verse, Chorus, etc.). |
+| **Master Patch** | The actual MainStage/external-synth program a Scene loads. |
+| **Preset** | A reusable, saved bundle of MIDI events. |
+| **Namespace** | A logical tag standing in for a hardware channel, so mappings survive a gear swap. |
+| **SubScreen** | An isolated control surface for a deep instrument's parameters. |
+| **Ghost Control** | A lightweight reference that mirrors another control's value on the main Mixer. |
+| **Radio Group** | A set of buttons where turning one on turns the others off. |
+| **Dynamic Ramp** | A smooth, jump-free transition from a parameter's live value to a target. |
+| **Soft Takeover** | Prevents a physical fader from causing a value jump after a scene change. |
+| **Legato Engine** | Keeps a sustained chord alive across a scene change until it's released. |
 
 ---
 
 ## Need Help?
 
-- Check the [Technical Overview](MIDI_ASSISTANT_TECHNICAL_OVERVIEW.md) for deeper details
-- Review the [Command Reference](../swift_src/MIDI_TOOLS_COMMANDS.md) for all available tools
-- Look at the project logs in `/logs/` for troubleshooting history
+- See the [Technical Overview](MIDI_ASSISTANT_TECHNICAL_OVERVIEW.md) for architecture details.
+- Visit the [Support page](support.html) for common issues and to contact the developer.
 
 ---
 
