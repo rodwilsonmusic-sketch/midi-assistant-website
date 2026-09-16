@@ -12,7 +12,7 @@ website is hosted, what it connects to, and what is deliberately deferred. Updat
 |---|---|
 | `RodWilsonMusic.com` | Registered at **GoDaddy**. GoDaddy is the DNS host. |
 | Root (`@`) and `www` | Point to **Bandzoogle** (the music site). Do not touch. |
-| `midiassistant.rodwilsonmusic.com` | **Does not exist yet.** This is the one record this plan adds. |
+| `midiassistant.rodwilsonmusic.com` | **LIVE since Sept 16 2026.** CNAME → `midiassistant.pages.dev`, added at GoDaddy; Cloudflare verified it and issued HTTPS. Every other record verified identical to the pre-change snapshot (`website-design-ideas/dns-snapshot-rodwilsonmusic.com-2026-09-16.txt`). |
 
 ### Email
 | Item | State |
@@ -34,7 +34,7 @@ website is hosted, what it connects to, and what is deliberately deferred. Updat
 |---|---|
 | Source | `/Volumes/Music1/GeminiProjects/midi-assistant-website/` |
 | Remote | `https://github.com/rodwilsonmusic-sketch/midi-assistant-website.git` — **public repo**. Anything committed here is world-readable. Never commit anything meant to be sold. |
-| Hosting | **Not yet hosted anywhere.** Nothing serves it. |
+| Hosting | **Cloudflare Pages**, project `midiassistant` (`midiassistant.pages.dev`), connected to the GitHub repo via the "legacy Pages" flow; every push to `main` auto-deploys. Framework None, no build command, output `/`. Pages serves clean URLs (`/features`), which `site.js` accounts for. |
 | Content before this plan | 3 pages (index/support/privacy) written for the TestFlight beta in June 2026; never updated after launch. |
 | Content now (Sept 16 2026) | 6 pages rebuilt on the chosen "Concept A" design: live video hero (`assets/stage-loop.mp4`, 10 s locked-off loop of the user's AI-generated stage) with the real Remote and MainStage screenshots mapped in perspective onto the iPad and laptop by `site.js`; animated signal-flow diagram; Sora/Manrope type. |
 
@@ -109,9 +109,13 @@ Shared: `style.css`, `assets/`, `downloads/` (the actual files).
 1. ~~App Store URLs~~ — done Sept 16.
 2. **Remaining screenshots** — Concert Editor (no capture exists), Remote in Compact and Setlist Only layouts (the four-layouts row shows two placeholders until then).
 3. **Which concerts / SubScreen templates are free to give away** — Downloads page shows "coming soon" slots.
-4. **Cloudflare account** — create at cloudflare.com (free), then Workers & Pages → Create → Connect to Git → pick this repo. Build command: none. Output directory: `/`.
+4. ~~Cloudflare account~~ — done Sept 16.
+5. **Bandzoogle nav link** to `https://midiassistant.rodwilsonmusic.com` (owner).
+6. **Mac shot of MainStage + MIDI Assistant windows** for the hero laptop overlay (owner).
+
+~~4. Cloudflare account~~ — create at cloudflare.com (free), then Workers & Pages → Create → Connect to Git → pick this repo. Build command: none. Output directory: `/`.
 
 ---
 
 ## 5. Change log
-- **2026-09-16** — Plan written. Site rebuilt from the 3-page TestFlight version to the phase-1 site map above. Three design concepts explored; Concept A chosen and built with the live video hero. App Store links added. Not yet committed, hosted, or pointed to by DNS.
+- **2026-09-16** — Plan written. Site rebuilt from the 3-page TestFlight version to the phase-1 site map above. Three design concepts explored; Concept A chosen and built with the live video hero. App Store links added. Committed, pushed, deployed to Cloudflare Pages, and live at https://midiassistant.rodwilsonmusic.com the same day; mail records verified unchanged.
