@@ -10,8 +10,9 @@ document.querySelectorAll('[data-store]').forEach((a) => {
 });
 
 // ---- Nav: mark the current page, go solid once the page scrolls.
-const here = location.pathname.split('/').pop() || 'index.html';
-document.querySelectorAll('.links a').forEach((a) => { if (a.getAttribute('href') === here) a.setAttribute('aria-current', 'page'); });
+// Cloudflare serves clean URLs (/features for features.html), so compare with the extension stripped.
+const here = (location.pathname.split('/').pop() || 'index').replace(/\.html$/, '');
+document.querySelectorAll('.links a').forEach((a) => { if (a.getAttribute('href').replace(/\.html$/, '') === here) a.setAttribute('aria-current', 'page'); });
 const nav = document.querySelector('nav');
 const onScroll = () => nav.classList.toggle('solid', scrollY > 40);
 addEventListener('scroll', onScroll, { passive: true }); onScroll();
