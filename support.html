@@ -4,42 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support | MIDI Assistant</title>
+    <meta name="description" content="Get help with MIDI Assistant: system requirements, frequently asked questions, troubleshooting for routing, the iPad Remote, and Host FX Mode, and how to contact the developer.">
+    <link rel="icon" type="image/png" href="assets/icon-mac-256.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav>
-        <a href="index.html" class="brand">MIDI Assistant</a>
-        <div class="nav-links">
-            <a href="support.html" style="color: var(--text-main);">Support</a>
-            <a href="privacy.html">Privacy</a>
+        <div class="wrap">
+            <a class="brand" href="index.html"><img src="assets/icon-mac-256.png" alt="">MIDI Assistant <small>BackStage · for MainStage</small></a>
+            <div class="links">
+                <a href="features.html">Features</a>
+                <a href="downloads.html">Downloads</a>
+                <a href="guide.html">Guide</a>
+                <a href="support.html">Support</a>
+            </div>
         </div>
     </nav>
 
-    <main>
-        <div class="hero">
-            <h1 style="font-size: 2.5rem;">How can we help?</h1>
-            <p class="subtitle">Get support for MIDI Assistant routing, networking, and Host FX setup.</p>
-        </div>
+    <main><div class="wrap doc" style="padding-bottom:100px">
+        <header class="page-head" style="padding-left:0;padding-right:0">
+            <span class="eyebrow">Support</span>
+            <h1>How can we help?</h1>
+            <p class="lead">MIDI Assistant is built and supported by one working keyboardist. Questions get answered by the person who wrote the code.</p>
+        </header>
 
-        <div class="glass-panel">
-            <h2>Common Issues</h2>
-            <ul>
-                <li><strong>UDP Network Sync:</strong> Ensure your iPad and your Mac running MainStage are on the same local Wi-Fi network or connected via a stable ad-hoc/wired connection.</li>
-                <li><strong>Host FX Mode:</strong> Ensure the AUv3 plugin is properly loaded on the channel strip you wish to control. Make sure no firewall is blocking local UDP traffic.</li>
-                <li><strong>Bi-Directional Stutter:</strong> Avoid creating infinite feedback loops between your hardware faders and the iPad UI.</li>
+        <section class="panel" style="padding:36px">
+            <h2>Contact</h2>
+            <p>For bug reports, feature requests, or help with your rig, email us and include your macOS version, MIDI Assistant version (from the About window), and what you were doing when the problem happened.</p>
+            <a href="mailto:support@rodwilsonmusic.com" class="btn">support@rodwilsonmusic.com</a>
+        </section>
+
+        <section style="padding:0 0 56px">
+            <h2 style="margin-bottom:16px">System requirements</h2>
+            <table>
+                <tr><th>Mac app</th><td>macOS 13 or later. MainStage for Host FX Mode (the AUv3 plugin). Works with any MIDI-capable software for routing and the Mixer.</td></tr>
+                <tr><th>iPad Remote</th><td>An iPad on the same local network as the Mac (Wi-Fi, or wired/ad-hoc for the most stable connection).</td></tr>
+                <tr><th>Controllers</th><td>Any class-compliant MIDI controller. Launch Control XL and Lemur layouts are supported out of the box.</td></tr>
+            </table>
+        </section>
+
+        <section style="padding:0 0 56px">
+            <h2 style="margin-bottom:16px">Frequently asked questions</h2>
+
+            <details>
+                <summary>My iPad isn't syncing with the Mac</summary>
+                <ul>
+                    <li>Confirm both devices are on the same local Wi-Fi network, or use a stable wired/ad-hoc connection.</li>
+                    <li>Check that macOS's local-network permission prompt for MIDI Assistant wasn't dismissed as <strong>Deny</strong> (System Settings → Privacy &amp; Security → Local Network).</li>
+                    <li>Make sure no firewall is blocking local UDP traffic between the two devices.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Host FX Mode in MainStage isn't responding</summary>
+                <ul>
+                    <li>Confirm the MIDI Assistant AUv3 plugin is loaded on the channel strip you want to control.</li>
+                    <li>In the Performance Hub, check the Processing Mode is set to <strong>Host FX</strong> rather than <strong>Hub Processing</strong>.</li>
+                    <li>If MainStage was open before MIDI Assistant was installed, restart MainStage so it rescans plugins.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>My hardware fader jumped when I changed Scenes</summary>
+                <p>Turn on <strong>Soft Takeover</strong> for that port in the MIDI Routing window. <strong>Pickup</strong> waits for the fader to cross the current value; <strong>Proportional</strong> scales your movement so it catches up smoothly. Pick whichever feels right for the control.</p>
+            </details>
+
+            <details>
+                <summary>A fader is noisy or twitchy when I'm not touching it</summary>
+                <p>That's electrical jitter from the analog control. The <strong>Jitter Lock Filter</strong> handles it automatically; if it still seems too sensitive or too sluggish, check the port's routing settings.</p>
+            </details>
+
+            <details>
+                <summary>A port stopped passing notes after I changed a mapping</summary>
+                <p>Check the port's <strong>Namespace</strong> and active-state settings in the MIDI Routing window before assuming a fault. A port whose Namespace isn't active for the current Scene is muted by design — that's what lets you switch rigs per Scene.</p>
+            </details>
+
+            <details>
+                <summary>Where are my Concerts stored?</summary>
+                <p>In <code>~/Documents/MidiAssistantData</code> by default. You can choose a different folder in Settings; MIDI Assistant remembers it between launches.</p>
+            </details>
+
+            <details>
+                <summary>Does MIDI Assistant collect any data?</summary>
+                <p>No. It runs entirely on your device and local network, collects no personal information, and uses no analytics or advertising frameworks. See the <a href="privacy.html">Privacy Policy</a>.</p>
+            </details>
+
+            <details>
+                <summary>Does it work without MainStage?</summary>
+                <p>Yes. Host FX Mode is MainStage-specific, but the Mixer, Concert Editor, and routing engine speak standard MIDI and work alongside Logic Pro, Ableton Live, or any other MIDI-capable software.</p>
+            </details>
+        </section>
+
+        <section class="panel" style="padding:36px">
+            <h2>More resources</h2>
+            <ul style="margin-bottom:0">
+                <li><a href="guide.html">The Musicians Guide</a> — concepts, first-gig setup, workflow, and troubleshooting.</li>
+                <li><a href="downloads.html">Downloads</a> — example Concerts, SubScreen templates, and the Guide as a PDF.</li>
             </ul>
-        </div>
-
-        <div class="glass-panel">
-            <h2>Contact the Developer</h2>
-            <p>If you are participating in our TestFlight Beta, we want to hear from you. For bug reports, feature requests, or technical assistance, please email us directly.</p>
-            <br>
-            <a href="mailto:support@rodwilsonmusic.com" class="btn">Email Support</a>
-        </div>
-    </main>
+        </section>
+        </div></main>
 
     <footer>
-        <p>&copy; 2026 Rod Wilson Music. All rights reserved.</p>
+        <div class="wrap">
+            <div>&copy; 2026 <a href="https://rodwilsonmusic.com">Rod Wilson Music</a>. All rights reserved.</div>
+            <div>
+                <a href="features.html">Features</a>
+                <a href="downloads.html">Downloads</a>
+                <a href="guide.html">Guide</a>
+                <a href="support.html">Support</a>
+                <a href="privacy.html">Privacy</a>
+            </div>
+        </div>
     </footer>
+    <script src="site.js"></script>
 </body>
 </html>

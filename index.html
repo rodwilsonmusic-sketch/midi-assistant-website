@@ -3,49 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIDI Assistant</title>
+    <title>MIDI Assistant — Your whole rig. One surface.</title>
+    <meta name="description" content="MIDI Assistant turns an iPad into the control surface for everything on stage — MainStage, your plugins, your keyboards — with a real Mixer, a Concert Editor, and transitions that never jump. Mac app, AUv3 plugin, and iPad Remote.">
+    <meta property="og:title" content="MIDI Assistant — Your whole rig. One surface.">
+    <meta property="og:description" content="A real Mixer, a Concert Editor, and a live Performance Hub for your MainStage rig, with an iPad Remote that stays perfectly in sync.">
+    <meta property="og:image" content="assets/stage-still.jpg">
+    <link rel="icon" type="image/png" href="assets/icon-mac-256.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav>
-        <a href="index.html" class="brand">MIDI Assistant</a>
-        <div class="nav-links">
-            <a href="support.html">Support</a>
-            <a href="privacy.html">Privacy</a>
+        <div class="wrap">
+            <a class="brand" href="index.html"><img src="assets/icon-mac-256.png" alt="">MIDI Assistant <small>BackStage · for MainStage</small></a>
+            <div class="links">
+                <a href="features.html">Features</a>
+                <a href="downloads.html">Downloads</a>
+                <a href="guide.html">Guide</a>
+                <a href="support.html">Support</a>
+            </div>
         </div>
     </nav>
 
     <main>
-        <div class="hero">
-            <h1>Absolute Control. <br>Zero Latency.</h1>
-            <p class="subtitle">A professional-grade, ultra-low latency MIDI routing and processing hub designed specifically for live performance keyboardists.</p>
-        </div>
+        <section class="hero" id="hero">
+            <div class="stage" id="stage">
+                <video muted playsinline preload="auto" src="assets/stage-loop.mp4"></video>
+                <video muted playsinline preload="auto" src="assets/stage-loop.mp4"></video>
+                <img class="screen" id="scr" src="assets/remote-full-stage.jpg" alt="">
+                <img class="screen lap" id="lap" src="assets/mac-mainstage.jpg" alt="">
+                <div class="glow" id="glw"></div>
+            </div>
+            <div class="scrim"></div>
+            <div class="wrap">
+                <span class="eyebrow">Mac app · AUv3 plugin · iPad Remote</span>
+                <h1>Your whole rig.<br><span class="grad">One surface.</span></h1>
+                <p class="lead">MIDI Assistant turns an iPad into the control surface for everything on stage — MainStage, your plugins, your keyboards — with a real Mixer, a Concert Editor, and transitions that never jump.</p>
+                <div class="ctas">
+                    <a class="store" data-store="mac" href="#"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.42 2.2-1.24 3.05-.98 1.03-2.17 1.62-3.36 1.52a3.4 3.4 0 0 1-.02-.42c0-1.1.47-2.27 1.31-3.11.42-.45.96-.82 1.61-1.11.65-.29 1.26-.45 1.84-.48.02.18.03.36.03.55zM20.9 17.22c-.48 1.1-.71 1.6-1.33 2.58-.87 1.36-2.09 3.06-3.6 3.07-1.35.01-1.7-.88-3.53-.87-1.83.01-2.21.88-3.56.87-1.51-.02-2.67-1.55-3.54-2.91C2.9 16.14 2.64 11.68 4.09 9.3c1.03-1.68 2.66-2.67 4.19-2.67 1.56 0 2.54.88 3.83.88 1.25 0 2.01-.88 3.81-.88 1.36 0 2.81.74 3.84 2.02-3.37 1.85-2.82 6.66 1.14 8.57z"/></svg><div><small>Download on the</small><b>Mac App Store</b></div></a>
+                    <a class="store" data-store="ipad" href="#"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.42 2.2-1.24 3.05-.98 1.03-2.17 1.62-3.36 1.52a3.4 3.4 0 0 1-.02-.42c0-1.1.47-2.27 1.31-3.11.42-.45.96-.82 1.61-1.11.65-.29 1.26-.45 1.84-.48.02.18.03.36.03.55zM20.9 17.22c-.48 1.1-.71 1.6-1.33 2.58-.87 1.36-2.09 3.06-3.6 3.07-1.35.01-1.7-.88-3.53-.87-1.83.01-2.21.88-3.56.87-1.51-.02-2.67-1.55-3.54-2.91C2.9 16.14 2.64 11.68 4.09 9.3c1.03-1.68 2.66-2.67 4.19-2.67 1.56 0 2.54.88 3.83.88 1.25 0 2.01-.88 3.81-.88 1.36 0 2.81.74 3.84 2.02-3.37 1.85-2.82 6.66 1.14 8.57z"/></svg><div><small>iPad Remote on the</small><b>App Store</b></div></a>
+                    <a class="btn ghost" href="#flow">See how it fits together ↓</a>
+                </div>
+            </div>
+            <div class="note">Live video · real Remote and MainStage screens</div>
+        </section>
 
-        <div class="glass-panel">
-            <h2>The App Store Pitch</h2>
-            <p>Built with a strict lock-free C++ DSP audio kernel, MIDI Assistant guarantees zero UDP stuttering and dropouts when you need it most. Whether you are managing massive parameter dumps from MainStage patch changes, visualizing complex multi-keyboard splits, or applying dynamic velocity curves on the fly, MIDI Assistant gives you total visual and technical control over your rig.</p>
-        </div>
+        <section class="strip"><div class="wrap">
+            <div class="cell"><div class="tag">Mac app</div><h3>Build the rig</h3><p>Mixer Console, Concert Editor, MIDI Routing, Capture &amp; Catalog. Everything is constructed from your own Concert.</p></div>
+            <div class="cell"><div class="tag">AUv3 plugin</div><h3>Host FX Mode</h3><p>Loads into a MainStage channel strip. Sample-accurate, in-host, on a lock-free C++ kernel.</p></div>
+            <div class="cell"><div class="tag">iPad Remote</div><h3>Run the show</h3><p>Four layouts, one app, always in sync with the Mac. The surface you actually touch.</p></div>
+        </div></section>
 
-        <div class="glass-panel">
-            <h2>Key Features</h2>
-            <ul>
-                <li><strong>Host FX Mode (AUv3):</strong> Seamlessly integrate into MainStage with a lock-free C++ DSP plugin.</li>
-                <li><strong>Bi-Directional Sync:</strong> Your iPad and your hardware are always in perfect harmony.</li>
-                <li><strong>Performance Hub:</strong> Visually track splits, layers, and routing for multiple physical keyboards simultaneously.</li>
-                <li><strong>Custom Event Ramps:</strong> Design non-linear exponential, logarithmic, and S-curves for precise control over your expression and volume pedals.</li>
-            </ul>
-        </div>
+        <section id="flow"><div class="wrap">
+            <div class="section-head">
+                <span class="eyebrow">How it fits together</span>
+                <h2>Touch the iPad.<br>Everything responds.</h2>
+                <p>One tap on a Section fires the whole cue — program changes, fader ramps, patch swaps — out to MainStage, your plugins, and your keyboards at once. The iPad is not a remote for one thing. It is the front of the whole rig.</p>
+            </div>
+            <div class="diagram">
+                <svg viewBox="0 0 1200 640" preserveAspectRatio="none">
+                    <path d="M600 320 C 520 320, 420 200, 250 150"/>
+                    <path d="M600 320 C 700 320, 800 200, 960 150"/>
+                    <path d="M600 320 C 520 320, 420 440, 250 500"/>
+                    <path d="M600 320 C 700 320, 800 440, 960 500"/>
+                </svg>
+                <span class="pulse" style="offset-path:path('M600 320 C 520 320, 420 200, 250 150');animation-delay:0s"></span>
+                <span class="pulse" style="offset-path:path('M600 320 C 700 320, 800 200, 960 150');animation-delay:.8s"></span>
+                <span class="pulse" style="offset-path:path('M600 320 C 520 320, 420 440, 250 500');animation-delay:1.6s"></span>
+                <span class="pulse" style="offset-path:path('M600 320 C 700 320, 800 440, 960 500');animation-delay:2.4s"></span>
+                <div class="ipad"><img src="assets/remote-full-stage.jpg" alt="MIDI Assistant Remote, Full Stage layout"><div class="lab">iPad Remote · Full Stage</div></div>
+                <div class="node" style="left:0;top:40px;width:300px"><div class="lab">MainStage</div><img src="assets/mac-mainstage.jpg" alt="MainStage with the MIDI Assistant plugin loaded"></div>
+                <div class="node" style="right:0;top:40px;width:300px"><div class="lab">Mac · Mixer Console</div><img src="assets/mac-mixer.jpg" alt="MIDI Assistant Mixer Console"></div>
+                <div class="node text" style="left:0;bottom:40px;width:300px"><div class="lab">Your plugins</div><h4>Omnisphere · Kontakt · BigSky · EchoBoy</h4><p>Every deep parameter lives on a SubScreen you designed — organ drawbars, pad matrices, reverb engines — one tap from the main Mixer.</p></div>
+                <div class="node text" style="right:0;bottom:40px;width:300px"><div class="lab">Your keyboards</div><h4>Any controller, any name</h4><p>Hardware routes through Namespaces, so swapping a keyboard means re-pointing one name, not rebuilding every mapping.</p></div>
+            </div>
+        </div></section>
 
-        <div class="glass-panel">
-            <h2>Join the TestFlight Beta</h2>
-            <p>In this beta build, we are specifically looking for feedback on our core routing engine and UI responsiveness. Please push the app to its limits and focus your testing on Host FX Mode stability and Multi-Keyboard splits.</p>
-            <br>
-            <a href="mailto:support@rodwilsonmusic.com" class="btn">Request Access</a>
-        </div>
+        <section class="band">
+            <div class="bg"></div><div class="scrim"></div>
+            <div class="wrap">
+                <span class="eyebrow">Built for the moment the song changes</span>
+                <h2>Transitions that never jump.</h2>
+                <p style="max-width:500px;font-size:17px">MainStage has no automation. MIDI Assistant gives you the parts that matter live, and makes them safe.</p>
+                <ul>
+                    <li><i><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></i><span><strong>Dynamic Ramps</strong> — Linear, Exponential, Log, or S-Curve, timed in bars, beats, or seconds, always starting from the parameter's real current value.</span></li>
+                    <li><i><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></i><span><strong>Legato Engine</strong> — change Scenes mid-chord; sustained notes are carried across and released cleanly.</span></li>
+                    <li><i><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></i><span><strong>Soft Takeover</strong> — a non-motorized fader can't cause a value jump after a Scene change.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section><div class="wrap">
+            <div class="section-head">
+                <span class="eyebrow">Everything in the box</span>
+                <h2>Built from your Concert, not a fixed template.</h2>
+                <p>A folk trio and a six-channel worship rig can look nothing alike — from the same app.</p>
+            </div>
+            <div class="grid cols-3">
+                <div class="card"><svg class="ic" viewBox="0 0 24 24"><path d="M4 6v12M10 4v16M16 8v12M22 5v14"/><circle cx="4" cy="11" r="2" fill="#0d0f15"/><circle cx="10" cy="15" r="2" fill="#0d0f15"/><circle cx="16" cy="12" r="2" fill="#0d0f15"/></svg><h3>Mixer Console</h3><p>Faders, a button matrix, knobs, and SubScreens — constructed dynamically from your Concert.</p></div>
+                <div class="card"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg><h3>Concert Editor</h3><p>Scenes and Sections with Program Change, CC, and SysEx triggers that fire the instant a Scene loads.</p></div>
+                <div class="card"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><h3>Performance Hub</h3><p>Keyboard split visualization, per-Section countdowns with a transition warning, tempo, and Panic.</p></div>
+                <div class="card"><svg class="ic" viewBox="0 0 24 24"><path d="M4 7h6l4 10h6M4 17h6l4-10h6"/></svg><h3>Smart Routing</h3><p>Virtual ports and Namespaces. Rename anything. Survive a gear swap without touching a mapping.</p></div>
+                <div class="card"><svg class="ic" viewBox="0 0 24 24"><path d="M3 17c4 0 5-10 9-10s5 10 9 10"/></svg><h3>Dynamic Ramps</h3><p>Convert a Section's faders to smooth, shaped ramps in one action.</p></div>
+                <div class="card"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg><h3>Capture &amp; Catalog</h3><p>Snapshot a soundcheck balance into a named, reusable preset in seconds.</p></div>
+            </div>
+            <p style="margin-top:28px"><a href="features.html">See every feature →</a></p>
+        </div></section>
+
+        <section style="padding-top:0"><div class="wrap">
+            <div class="section-head" style="text-align:center;margin:0 auto 48px">
+                <span class="eyebrow">iPad Remote</span>
+                <h2>Four ways to look at the same show.</h2>
+                <p>Switch layouts from the toolbar — no reconnecting, no lost state.</p>
+            </div>
+            <div class="row4">
+                <figure><div class="dev"><img src="assets/remote-compact.jpg" alt="Remote, Compact layout"></div><figcaption>Compact<small>A strip. Shares the iPad with Lemur or anything else.</small></figcaption></figure>
+                <figure><div class="dev"><img src="assets/remote-full-stage.jpg" alt="Remote, Full Stage layout"></div><figcaption>Full Stage<small>The iPad is the show.</small></figcaption></figure>
+                <figure><div class="dev"><img src="assets/remote-setlist.jpg" alt="Remote, Setlist Only layout"></div><figcaption>Setlist Only<small>A panel. Just pick the next song.</small></figcaption></figure>
+                <figure><div class="dev"><img src="assets/remote-mixer.jpg" alt="Remote, Mixer layout"></div><figcaption>Mixer<small>The fader grid, iPad-side.</small></figcaption></figure>
+            </div>
+        </div></section>
+
+        <section class="cta"><div class="wrap"><div class="box">
+            <div class="bg"></div><div class="scrim"></div>
+            <div class="in">
+                <h2>Ready when you are.</h2>
+                <p>Requires macOS 13 or later. The Remote connects over your local network — nothing leaves the room.</p>
+                <div class="ctas">
+                    <a class="store" data-store="mac" href="#"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.42 2.2-1.24 3.05-.98 1.03-2.17 1.62-3.36 1.52a3.4 3.4 0 0 1-.02-.42c0-1.1.47-2.27 1.31-3.11.42-.45.96-.82 1.61-1.11.65-.29 1.26-.45 1.84-.48.02.18.03.36.03.55zM20.9 17.22c-.48 1.1-.71 1.6-1.33 2.58-.87 1.36-2.09 3.06-3.6 3.07-1.35.01-1.7-.88-3.53-.87-1.83.01-2.21.88-3.56.87-1.51-.02-2.67-1.55-3.54-2.91C2.9 16.14 2.64 11.68 4.09 9.3c1.03-1.68 2.66-2.67 4.19-2.67 1.56 0 2.54.88 3.83.88 1.25 0 2.01-.88 3.81-.88 1.36 0 2.81.74 3.84 2.02-3.37 1.85-2.82 6.66 1.14 8.57z"/></svg><div><small>Download on the</small><b>Mac App Store</b></div></a>
+                    <a class="store" data-store="ipad" href="#"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.42 2.2-1.24 3.05-.98 1.03-2.17 1.62-3.36 1.52a3.4 3.4 0 0 1-.02-.42c0-1.1.47-2.27 1.31-3.11.42-.45.96-.82 1.61-1.11.65-.29 1.26-.45 1.84-.48.02.18.03.36.03.55zM20.9 17.22c-.48 1.1-.71 1.6-1.33 2.58-.87 1.36-2.09 3.06-3.6 3.07-1.35.01-1.7-.88-3.53-.87-1.83.01-2.21.88-3.56.87-1.51-.02-2.67-1.55-3.54-2.91C2.9 16.14 2.64 11.68 4.09 9.3c1.03-1.68 2.66-2.67 4.19-2.67 1.56 0 2.54.88 3.83.88 1.25 0 2.01-.88 3.81-.88 1.36 0 2.81.74 3.84 2.02-3.37 1.85-2.82 6.66 1.14 8.57z"/></svg><div><small>iPad Remote on the</small><b>App Store</b></div></a>
+                </div>
+            </div>
+        </div></div></section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Rod Wilson Music. All rights reserved.</p>
+        <div class="wrap">
+            <div>&copy; 2026 <a href="https://rodwilsonmusic.com">Rod Wilson Music</a>. All rights reserved.</div>
+            <div>
+                <a href="features.html">Features</a>
+                <a href="downloads.html">Downloads</a>
+                <a href="guide.html">Guide</a>
+                <a href="support.html">Support</a>
+                <a href="privacy.html">Privacy</a>
+            </div>
+        </div>
     </footer>
+    <script src="site.js"></script>
 </body>
 </html>

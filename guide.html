@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musicians Guide | MIDI Assistant</title>
+    <meta name="description" content="The MIDI Assistant Musicians Guide: what it is, the three pieces, key concepts, setting up for your first gig, the iPad Remote layouts, workflow, tips, troubleshooting, and glossary.">
+    <link rel="icon" type="image/png" href="assets/icon-mac-256.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="wrap">
+            <a class="brand" href="index.html"><img src="assets/icon-mac-256.png" alt="">MIDI Assistant <small>BackStage · for MainStage</small></a>
+            <div class="links">
+                <a href="features.html">Features</a>
+                <a href="downloads.html">Downloads</a>
+                <a href="guide.html">Guide</a>
+                <a href="support.html">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <main><div class="wrap doc" style="padding-bottom:100px">
+        <header class="page-head" style="padding-left:0;padding-right:0">
+            <span class="eyebrow">Documentation</span>
+            <h1>A Musician's Guide</h1>
+            <p class="lead">Everything you need to go from install to first gig. Prefer paper? <a href="downloads/MIDI-Assistant-Musicians-Guide.pdf">Download the PDF</a>.</p>
+        </header>
+
+        <div class="toc">
+            <strong>Contents</strong>
+            <ol>
+                <li><a href="#what">What is MIDI Assistant?</a></li>
+                <li><a href="#pieces">The three pieces</a></li>
+                <li><a href="#use-cases">Real-world use cases</a></li>
+                <li><a href="#concepts">Key concepts</a></li>
+                <li><a href="#first-gig">Setting up for your first gig</a></li>
+                <li><a href="#remote">The iPad Remote</a></li>
+                <li><a href="#workflow">Concert workflow</a></li>
+                <li><a href="#tips">Tips from the stage</a></li>
+                <li><a href="#troubleshooting">Troubleshooting</a></li>
+                <li><a href="#glossary">Glossary</a></li>
+            </ol>
+        </div>
+
+        <h2 id="what">What is MIDI Assistant?</h2>
+        <p><strong>MIDI Assistant</strong> is your backstage helper for Apple MainStage — a Mac app, an AUv3 plugin, and a companion iPad Remote that work together to give you superpowers MainStage doesn't have on its own:</p>
+        <ul>
+            <li><strong>Complex MIDI automation</strong> — fire sequences of MIDI events with a single button press</li>
+            <li><strong>A real Mixer Console</strong> — a dedicated, fully customizable fader-and-matrix control surface for your whole rig</li>
+            <li><strong>Smart routing</strong> — route and rename MIDI between controllers without rewiring anything in MainStage</li>
+            <li><strong>A live performance surface</strong> — run the whole show from an iPad, in perfect sync with the Mac</li>
+        </ul>
+
+        <h2 id="pieces">The three pieces</h2>
+        <table>
+            <tr><th>Piece</th><th>What it's for</th></tr>
+            <tr><td><strong>MIDI Assistant (Mac app)</strong></td><td>Where you build your rig: the Mixer, the Concert Editor, MIDI Routing, and Capture/Catalog tools.</td></tr>
+            <tr><td><strong>AUv3 plugin (Host FX Mode)</strong></td><td>Loads directly into a MainStage channel strip so MIDI Assistant's processing runs alongside your instruments, sample-accurate, inside MainStage itself.</td></tr>
+            <tr><td><strong>iPad Remote</strong></td><td>The surface you actually touch on stage — four interchangeable layouts, always in sync with the Mac.</td></tr>
+        </table>
+
+        <h2 id="use-cases">Real-world use cases</h2>
+        <h3>1. One-button Scene changes</h3>
+        <p><strong>The problem:</strong> changing from your verse sound to your chorus sound means hitting multiple buttons, changing patch, adjusting volume faders, and hoping you time it right.</p>
+        <p><strong>The solution:</strong> tap a single Section button — on the Mac or the iPad Remote — and MIDI Assistant fires the whole cued sequence: program changes, fader ramps, patch swaps, all at once.</p>
+        <h3>2. Tempo-synced transitions</h3>
+        <p><strong>The problem:</strong> you want a filter sweep or volume fade that takes exactly 2 bars, every time, regardless of tempo — and you don't want it to jump when it starts.</p>
+        <p><strong>The solution:</strong> convert a fader event to a <strong>Dynamic Ramp</strong>. MIDI Assistant reads the <em>actual current value</em> of the parameter and ramps smoothly from there to your target, timed in Bars, Beats, or Seconds, using Linear, Exponential, Logarithmic, or S-Curve shaping. No jump, no manual retiming when the tempo changes.</p>
+        <h3>3. Controller name freedom</h3>
+        <p><strong>The problem:</strong> MainStage knows your controller as "Network Session 1" or "Launch Control XL" and you can't rename it. Your mapping list becomes confusing.</p>
+        <p><strong>The solution:</strong> MIDI Assistant creates a virtual port with any name you want and routes your controller through it via a <strong>Namespace</strong> — a logical tag like <code>Lead Synth</code> instead of a raw channel number. Swap the physical keyboard later, and you re-point one Namespace instead of hunting down every mapping.</p>
+
+        <h2 id="concepts">Key concepts</h2>
+        <h3>Scenes, Sections &amp; Master Patches</h3>
+        <p>Think of a <strong>Scene</strong> as a song, and its <strong>Sections</strong> as the parts of that song (Intro, Verse, Chorus, etc.). Each Scene also carries a <strong>Master Patch</strong> — the actual MainStage or external-synth program it loads — plus its own list of MIDI events per Section.</p>
+        <h3>Presets</h3>
+        <p><strong>Presets</strong> are reusable event bundles, most often used for plugin/effect settings. Unlike a Scene (a whole song), a Preset is a portable chunk you can drop into any Section.</p>
+        <ul>
+            <li>Store your favorite reverb settings and recall them across multiple songs</li>
+            <li>Trigger a Preset independently, or attach it to a button's ON/OFF actions</li>
+            <li>Right-click a Preset in the Concert Editor and choose <strong>Add to Current Section</strong> to copy its events straight into the Section you're working on</li>
+        </ul>
+        <h3>The Mixer &amp; SubScreens</h3>
+        <p>The <strong>Mixer Console</strong> is your main control deck — faders, a button matrix, and top/side utility buttons, all built dynamically from your Concert. When a rig has more depth than fits on one screen (32 Omnisphere matrix buttons, 40 organ drawbars), that complexity lives in a <strong>SubScreen</strong> — its own isolated control surface, reachable by pressing and holding (or right-clicking) a fader's name label.</p>
+        <p>Need quick access to one deeply-nested SubScreen control without leaving the main Mixer? Create a <strong>Ghost Control</strong> — a lightweight reference that mirrors the original control's value, label, and behavior automatically.</p>
+        <h3>Radio Groups &amp; Momentary buttons</h3>
+        <p>Buttons default to <strong>Toggle</strong> (latching) behavior. Flip a button to <strong>Momentary</strong> for stutter effects or drum-pad style hits that only fire while held. Give several buttons the same <strong>Radio Group</strong>, and pressing one automatically turns the others off — perfect for "only one patch active at a time" selections.</p>
+        <h3>Soft Takeover</h3>
+        <p>Moving a scene to a new state can leave a physical (non-motorized) fader pointing at the wrong value. <strong>Soft Takeover</strong> prevents the jump: in <strong>Pickup</strong> mode the fader has to physically cross the current value before it takes control again; in <strong>Proportional</strong> mode it scales your movement so it catches up smoothly instead.</p>
+        <h3>The Legato Engine</h3>
+        <p>Changing scenes mid-chord shouldn't cut your sustain dead. MIDI Assistant's Legato Engine keeps the old patch sounding until you actually release those notes, then cleans up automatically — no special playing technique required.</p>
+
+        <h2 id="first-gig">Setting up for your first gig</h2>
+        <h3>What you'll need</h3>
+        <ol>
+            <li><strong>MIDI Assistant</strong> installed on your Mac (macOS 13 or later)</li>
+            <li><strong>MainStage</strong>, with the MIDI Assistant AUv3 plugin loaded on a channel strip (Host FX Mode) if you want sample-accurate in-host control</li>
+            <li><strong>MIDI Assistant Remote</strong> on your iPad, on the same local network as your Mac</li>
+            <li><strong>Your controllers</strong> (Lemur, Launch Control XL, hardware keyboards, etc.)</li>
+        </ol>
+        <h3>Quick start</h3>
+        <ol>
+            <li><strong>Open MIDI Assistant</strong> on your Mac.</li>
+            <li><strong>Open the MIDI Routing window</strong> and set up your virtual ports and hardware interceptions — this is where physical controllers get routed and (optionally) renamed via Namespaces.</li>
+            <li><strong>Open MIDI Assistant Remote</strong> on your iPad; it connects to the Mac automatically over your local network.</li>
+            <li><strong>Build your first Concert</strong> in the Concert Editor: add a Scene, rename <code>Section 1</code> to something real (<code>Intro</code>), and set a Master Patch trigger so the right sound loads with it.</li>
+            <li><strong>Switch to the Performance Hub</strong> (Mac) or the Remote's <strong>Full Stage</strong> or <strong>Mixer</strong> layout to run the show live.</li>
+        </ol>
+
+        <h2 id="remote">The iPad Remote: four ways to look at the same show</h2>
+        <p>Switch layouts from the toolbar's mode menu — no reconnecting, no lost state:</p>
+        <table>
+            <tr><th>Mode</th><th>Use it when…</th></tr>
+            <tr><td><strong>Compact (Lemur)</strong></td><td>You want the smallest footprint alongside other apps.</td></tr>
+            <tr><td><strong>Full (Stage)</strong></td><td>The iPad <em>is</em> the show — big touch targets, big labels.</td></tr>
+            <tr><td><strong>Setlist Only</strong></td><td>You just need to pick the next song.</td></tr>
+            <tr><td><strong>Mixer (LaunchCtrl)</strong></td><td>You want the fader-grid mixer, iPad-side.</td></tr>
+        </table>
+        <p>Tap a Section pill to jump straight to it. Tap the Scene name for a menu of every Scene and Section — a direct jump from anywhere to anywhere. If a Section has a duration, tap its progress bar to pause or resume the countdown.</p>
+
+        <h2 id="workflow">A day in the life: Concert workflow</h2>
+        <h3>Before the gig</h3>
+        <ol>
+            <li><strong>Build or update your Concert</strong> in the Concert Editor — Scenes, Sections, Master Patch triggers.</li>
+            <li><strong>Dial in your rig's routing profile</strong> for the venue (a simple solo setup vs. a full band rig with multiple controllers).</li>
+            <li><strong>Use Ad-Hoc Capture</strong> to grab a perfect soundcheck balance straight into a Section, instead of hand-typing every fader value.</li>
+        </ol>
+        <h3>During the gig</h3>
+        <ol>
+            <li><strong>Launch MIDI Assistant</strong> on the Mac; open MainStage.</li>
+            <li><strong>Run the show from the Performance Hub</strong> (Mac) or the <strong>iPad Remote</strong> — whichever surface you're actually standing behind.</li>
+            <li><strong>Hit your Section buttons</strong> and let the Legato Engine, Dynamic Ramps, and Soft Takeover handle the details.</li>
+        </ol>
+        <h3>After the gig</h3>
+        <ol>
+            <li><strong>Save any on-the-fly Ad-Hoc Presets</strong> you want to keep.</li>
+            <li><strong>Review anything that felt off</strong> — a Section that ran long, a fader that jumped — and adjust.</li>
+        </ol>
+
+        <h2 id="tips">Tips from the stage</h2>
+        <h4>1. Always test before the gig</h4>
+        <p>Play through your setlist end to end with the actual rig connected, not just on the bench.</p>
+        <h4>2. Use descriptive names</h4>
+        <p>Name your Sections "Intro", "Verse 1", "Chorus" — not "Section 1", "Section 2". Your future self will thank you.</p>
+        <h4>3. Start simple</h4>
+        <p>Get basic routing and one Scene working before layering on Ramps, Ghost Controls, and SubScreens. Build up gradually.</p>
+        <h4>4. Capture instead of retyping</h4>
+        <p>If a mix sounds perfect at soundcheck, use <strong>Snapshot → Save Ad-Hoc Preset</strong> rather than hand-entering thirty CC values.</p>
+        <h4>5. Lean on Dynamic Ramps for safety</h4>
+        <p>A ramp always starts from the fader's <em>real</em> current position — it can't jump, even if the previous Section left things in an unexpected state.</p>
+
+        <h2 id="troubleshooting">Troubleshooting</h2>
+        <div class="callout"><p><strong>"My iPad isn't syncing with the Mac"</strong></p><ul><li>Confirm both devices are on the same local Wi-Fi network (or a stable wired/ad-hoc connection).</li><li>Check macOS's local-network permission prompt for MIDI Assistant hasn't been dismissed as Deny.</li></ul></div>
+        <div class="callout"><p><strong>"My hardware fader jumped when I changed scenes"</strong></p><ul><li>Turn on <strong>Soft Takeover</strong> for that port in the MIDI Routing window, and pick Pickup or Proportional depending on feel.</li></ul></div>
+        <div class="callout"><p><strong>"A fader feels noisy or twitchy when I'm not touching it"</strong></p><ul><li>That's electrical jitter from the analog control. The <strong>Jitter Lock Filter</strong> handles this automatically, but check the port's routing settings if it still seems too sensitive or too sluggish.</li></ul></div>
+        <div class="callout"><p><strong>"Host FX Mode in MainStage isn't responding"</strong></p><ul><li>Confirm the AUv3 plugin is loaded on the correct channel strip and that its Processing Mode is set to <strong>Host FX</strong> rather than <strong>Hub Processing</strong> in the Performance Hub.</li></ul></div>
+
+        <h2 id="glossary">Glossary</h2>
+        <table>
+            <tr><th>Term</th><th>Meaning</th></tr>
+            <tr><td><strong>Concert</strong></td><td>Your full setlist — every Scene, Section, and mapping for a show.</td></tr>
+            <tr><td><strong>Scene</strong></td><td>A song in your setlist.</td></tr>
+            <tr><td><strong>Section</strong></td><td>A part of a Scene (Intro, Verse, Chorus, etc.).</td></tr>
+            <tr><td><strong>Master Patch</strong></td><td>The actual MainStage/external-synth program a Scene loads.</td></tr>
+            <tr><td><strong>Preset</strong></td><td>A reusable, saved bundle of MIDI events.</td></tr>
+            <tr><td><strong>Namespace</strong></td><td>A logical tag standing in for a hardware channel, so mappings survive a gear swap.</td></tr>
+            <tr><td><strong>SubScreen</strong></td><td>An isolated control surface for a deep instrument's parameters.</td></tr>
+            <tr><td><strong>Ghost Control</strong></td><td>A lightweight reference that mirrors another control's value on the main Mixer.</td></tr>
+            <tr><td><strong>Radio Group</strong></td><td>A set of buttons where turning one on turns the others off.</td></tr>
+            <tr><td><strong>Dynamic Ramp</strong></td><td>A smooth, jump-free transition from a parameter's live value to a target.</td></tr>
+            <tr><td><strong>Soft Takeover</strong></td><td>Prevents a physical fader from causing a value jump after a scene change.</td></tr>
+            <tr><td><strong>Legato Engine</strong></td><td>Keeps a sustained chord alive across a scene change until it's released.</td></tr>
+        </table>
+
+        <h2>Need help?</h2>
+        <p>Email <a href="mailto:support@rodwilsonmusic.com">support@rodwilsonmusic.com</a> or visit the <a href="support.html">Support page</a>.</p>
+    </div></main>
+
+    <footer>
+        <div class="wrap">
+            <div>&copy; 2026 <a href="https://rodwilsonmusic.com">Rod Wilson Music</a>. All rights reserved.</div>
+            <div>
+                <a href="features.html">Features</a>
+                <a href="downloads.html">Downloads</a>
+                <a href="guide.html">Guide</a>
+                <a href="support.html">Support</a>
+                <a href="privacy.html">Privacy</a>
+            </div>
+        </div>
+    </footer>
+    <script src="site.js"></script>
+</body>
+</html>
