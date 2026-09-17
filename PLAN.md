@@ -11,7 +11,7 @@ website is hosted, what it connects to, and what is deliberately deferred. Updat
 | Item | State |
 |---|---|
 | `RodWilsonMusic.com` | Registered at **GoDaddy**. GoDaddy is the DNS host. |
-| Root (`@`) and `www` | Point to **Bandzoogle** (the music site). Do not touch. |
+| Root (`@`) and `www` | **Since Sept 16 2026 evening: the music site moved OFF Bandzoogle.** `www` CNAME → `rodwilsonmusic.pages.dev` (Cloudflare Pages project `rodwilsonmusic`, repo `rodwilsonmusic-sketch/rodwilsonmusic-site`, private). Bare domain → GoDaddy 301 forwarding to `https://www.rodwilsonmusic.com` (root A record is now GoDaddy's forwarders). Mail records verified identical to the snapshot after the change. |
 | `midiassistant.rodwilsonmusic.com` | **LIVE since Sept 16 2026.** CNAME → `midiassistant.pages.dev`, added at GoDaddy; Cloudflare verified it and issued HTTPS. Every other record verified identical to the pre-change snapshot (`website-design-ideas/dns-snapshot-rodwilsonmusic.com-2026-09-16.txt`). |
 
 ### Email
@@ -23,11 +23,11 @@ website is hosted, what it connects to, and what is deliberately deferred. Updat
 ### Music site
 | Item | State |
 |---|---|
-| Platform | **Bandzoogle Lite** ($11/mo). |
+| Platform | ~~Bandzoogle Lite~~ — **replaced Sept 16 2026** by a static site (`/Volumes/Music1/GeminiProjects/rodwilsonmusic-site/`), same design family as this one with a gold accent. Bandzoogle content exported to `website-design-ideas/rodwilsonmusic-site/` before the switch. Owner still to cancel the Bandzoogle subscription. |
 | What Lite allows | Their templates + Visual Theme Designer + drag-and-drop content blocks. |
 | What Lite does not allow | HTML Code block and Custom CSS editor (Standard/Pro only). No plan allows uploading a custom HTML theme. |
 | Music hosting | SoundCloud (embedded). |
-| Role in this plan | Unchanged. It gets one nav link labelled "MIDI Assistant" pointing at the subdomain. |
+| Role in this plan | The music site's nav has a "MIDI Assistant" item and a teaser page linking here. |
 
 ### Product website (this repo)
 | Item | State |
@@ -110,7 +110,7 @@ Shared: `style.css`, `assets/`, `downloads/` (the actual files).
 2. **Remaining screenshots** — Concert Editor (no capture exists), Remote in Compact and Setlist Only layouts (the four-layouts row shows two placeholders until then).
 3. **Which concerts / SubScreen templates are free to give away** — Downloads page shows "coming soon" slots.
 4. ~~Cloudflare account~~ — done Sept 16.
-5. **Bandzoogle nav link** to `https://midiassistant.rodwilsonmusic.com` (owner).
+5. ~~Bandzoogle nav link~~ — moot; the new music site links here. **Owner to cancel Bandzoogle.**
 6. **Mac shot of MainStage + MIDI Assistant windows** for the hero laptop overlay (owner).
 
 ~~4. Cloudflare account~~ — create at cloudflare.com (free), then Workers & Pages → Create → Connect to Git → pick this repo. Build command: none. Output directory: `/`.
