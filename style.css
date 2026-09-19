@@ -115,6 +115,10 @@ nav .wrap { display: flex; align-items: center; justify-content: space-between; 
 .hero h1 { margin-top: 14px; max-width: 14ch; text-shadow: 0 2px 30px rgba(0,0,0,.6); }
 .hero .lead { margin: 18px auto 24px; color: #d9d7d1; text-shadow: 0 1px 20px rgba(0,0,0,.7); }
 .hero .ctas { justify-content: center; }
+.pricing { margin: 14px auto 0; max-width: 620px; font-size: 14px; color: var(--faint); }
+.pricing strong { color: #fff; font-weight: 600; }
+.hero .pricing { text-shadow: 0 1px 20px rgba(0,0,0,.7); }
+.cta .pricing { margin-top: 12px; }
 .hero .note { position: absolute; right: 32px; bottom: 20px; z-index: 2; font-size: 12px; color: var(--faint); }
 @media (prefers-reduced-motion: reduce) { .stage video { display: none; } }
 
