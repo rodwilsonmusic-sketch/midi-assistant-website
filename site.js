@@ -1,4 +1,19 @@
-// ---- App Store links: the single place they live. Every <a data-store="mac"|"ipad"> is filled from here.
+// ---- App Store links.
+//
+// These URLs live in TWO places on purpose, and both must be kept in step:
+//   1. the real href="..." on every <a data-store="mac"|"ipad"> in the HTML  <- what a browser
+//      with no JavaScript follows. Without it the buy path is dead: the buttons still render and
+//      look clickable, but go nowhere, with no visible sign anything is wrong.
+//   2. STORE_LINKS below, which overwrites those hrefs at load and also sets target/rel.
+//
+// So STORE_LINKS is still the authority at runtime, and the hardcoded hrefs are the fallback.
+// If you change a URL here, run this to update the HTML to match:
+//   grep -rn 'data-store=' *.html
+//
+// The numeric id (id6769863515 / id6785053481) is permanent for the life of the app record --
+// it does NOT change when a new version ships, so these links need no attention on release day.
+// The slug ("backstage-midiassistant") is cosmetic and derived from the APP NAME; Apple redirects
+// by id even when it is stale. Re-check these links after an app RENAME, not after a release.
 const STORE_LINKS = {
   mac:  'https://apps.apple.com/us/app/backstage-midiassistant/id6769863515?mt=12',
   ipad: 'https://apps.apple.com/us/app/midiassistant-remote/id6785053481',
