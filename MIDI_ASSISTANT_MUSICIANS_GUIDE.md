@@ -4,10 +4,10 @@
 
 **MIDI Assistant** is your backstage helper for Apple MainStage — a Mac app, an AUv3 plugin, and a companion iPad Remote that work together to give you superpowers MainStage doesn't have on its own:
 
-- 🎹 **Complex MIDI Automation** – Fire sequences of MIDI events with a single button press
-- 🎚️ **A Real Mixer Console** – A dedicated, fully customizable fader-and-matrix control surface for your whole rig
-- 🔀 **Smart Routing** – Route and rename MIDI between controllers without rewiring anything in MainStage
-- 📱 **A Live Performance Surface** – Run the whole show from an iPad, in perfect sync with the Mac
+- **Complex MIDI automation** — fire sequences of MIDI events with a single button press
+- **A real Mixer Console** — a dedicated, fully customizable fader-and-matrix control surface for your whole rig
+- **Smart routing** — route and rename MIDI between controllers without rewiring anything in MainStage
+- **A live performance surface** — run the whole show from an iPad, in perfect sync with the Mac
 
 ---
 
@@ -16,12 +16,28 @@
 | Piece | What it's for |
 | --- | --- |
 | **MIDI Assistant (Mac app)** | Where you build your rig: the Mixer, the Concert Editor, MIDI Routing, and Capture/Catalog tools. |
-| **AUv3 Plugin (Host FX Mode)** | Loads directly into a MainStage channel strip so MIDI Assistant's processing runs alongside your instruments, sample-accurate, inside MainStage itself. |
+| **AUv3 plugin (MidiAssistant Enhanced)** | Sits on each MainStage channel strip MIDI Assistant plays. In **Host FX** mode MIDI Assistant's processing runs inside the plugin, sample-accurate, alongside your instruments; in **App** mode the Mac app does the processing. |
 | **iPad Remote** | The surface you actually touch on stage — four interchangeable layouts, always in sync with the Mac. |
 
 ---
 
-## What's New in 0.3.2
+## What's New in 0.3.3
+
+| | What changed |
+| --- | --- |
+| 🥁 **Tap, enter and override a tempo** | A tempo cluster on the Mac and iPad Mixer: tap a tempo, or hold the pad to type or dial an exact one, then **OVERRIDE** plays it in place of the Scenes' tempos. While one plays, line up the next with **TAKE**. See **Tempo on the Fly**. |
+| 🎛️ **Launch Control XL drives the Mixer** | The XL's **User 8** template moves the Mixer's faders, knobs and Matrix with soft pickup, its lights follow the app, and a two-button push opens a fader's Sub-Screen. See **The Launch Control XL**. |
+| 🗺️ **Controller Masks** | **Tools → Controller Masks...** shows what every XL control does on each Sub-Screen and lets you change it: one **Job** button (such as *Enable*) for every plugin, SOLO layers for rehearsal, and an optional Top row for more live buttons. |
+| ↕️ **Reposition** | Knob stuck at its end stop? Press **Bottom 7 + 8** on the XL, move it where you want; nothing is sent, and it picks up again with no jump. |
+| 👀 **Look, don't leap** | Tap **MUTE** to browse Scenes and Sections without moving the song; tap it again to jump once. |
+| 📚 **One name, one Scene in the Catalog** | Pushing a Scene whose name is already in the Catalog asks to **Replace**, and **Refresh from Catalog…** brings the Catalog's copy back. Every prompt warns before an older copy replaces a newer one. |
+| ⚠️ **Duplicate events shown** | The event list flags a Section that sets the same control twice (red when the values fight). Saving a capture into a Section asks before adding a second event for the same control. |
+| 🔌 **Start in any order** | Each plugin gets its settings a few seconds after MainStage loads it, so starting MainStage after MIDI Assistant no longer needs Restart UDP. |
+| 🎹 **Redirect is for keyboards** | The Hardware Redirector lists only keyboards and asks before redirecting. Your MIDI Routing always decides which controllers feed its ports; a concert can no longer cut one off. |
+| 🧩 **One plugin** | **MidiAssistant Enhanced** is the only AUv3 plugin. Replace any "MidiAssistant Standard" left in a MainStage concert with Enhanced. |
+| 📦 **Concert Pack 1.3** | An updated MainStage concert and example concert, the XL's **User 8** template beside User 2, and the XL's controller file. **Help → Export MainStage Concert Pack…** exports the pack and offers to install the example concert and the controller file; the templates go into the XL with Novation Components. |
+
+## New in 0.3.2
 
 | | What changed |
 | --- | --- |
@@ -41,21 +57,21 @@
 
 ### 1. One-Button Scene Changes
 
-**The Problem:** Changing from your verse sound to your chorus sound requires hitting multiple buttons, changing patch, adjusting volume faders, and hoping you time it right.
+**The problem:** changing from your verse sound to your chorus sound means hitting multiple buttons, changing patch, adjusting volume faders, and hoping you time it right.
 
-**The Solution:** Tap a single Section button — on the Mac or the iPad Remote — and MIDI Assistant fires the whole cued sequence: program changes, fader ramps, patch swaps, all at once.
+**The solution:** tap a single Section button — on the Mac or the iPad Remote — and MIDI Assistant fires the whole cued sequence: program changes, fader ramps, patch swaps, all at once.
 
 ### 2. Tempo-Synced Transitions
 
-**The Problem:** You want a filter sweep or volume fade that takes exactly 2 bars, every time, regardless of tempo — and you don't want it to jump when it starts.
+**The problem:** you want a filter sweep or volume fade that takes exactly 2 bars, every time, regardless of tempo — and you don't want it to jump when it starts.
 
-**The Solution:** Convert a fader event to a **Dynamic Ramp**. MIDI Assistant reads the *actual current value* of the parameter and ramps smoothly from there to your target, timed in Bars, Beats, or Seconds, using Linear, Exponential, Logarithmic, or S-Curve shaping. No jump, no manual retiming when the tempo changes.
+**The solution:** convert a fader event to a **Dynamic Ramp**. MIDI Assistant reads the *actual current value* of the parameter and ramps smoothly from there to your target, timed in Bars, Beats, or Seconds, using Linear, Exponential, Logarithmic, or S-Curve shaping. No jump, no manual retiming when the tempo changes.
 
 ### 3. Controller Name Freedom
 
-**The Problem:** MainStage knows your controller as "Network Session 1" or "Launch Control XL" and you can't rename it. Your mapping list becomes confusing.
+**The problem:** MainStage knows your controller as "Network Session 1" or "Launch Control XL" and you can't rename it. Your mapping list becomes confusing.
 
-**The Solution:** MIDI Assistant creates a virtual port with any name you want and routes your controller through it via a **Namespace** — a logical tag like `Lead Synth` instead of a raw channel number. Swap the physical keyboard later, and you re-point one Namespace instead of hunting down every mapping.
+**The solution:** MIDI Assistant creates a virtual port with any name you want and routes your controller through it via a **Namespace** — a logical tag like `Lead Synth` instead of a raw channel number. Swap the physical keyboard later, and you re-point one Namespace instead of hunting down every mapping.
 
 ---
 
@@ -78,8 +94,10 @@ When a Mixer fader hosts a rack of instruments (for example an Omnisphere Multi)
 
 The **Catalog** is your library of Scenes, Master Patches and Presets, shared between concerts. Below **Concert Start-Up Settings** in the Setlist, a status line tells you how your setlist compares with it — for example *Catalog: 17 new · 16 changed* — and each Scene row shows a **NEW** or **CHANGED** badge (no badge means it's in sync).
 
-- **Push All…** adds every NEW Scene, then lists each CHANGED Scene with both dates so you can choose **Replace** (overwrite the Catalog's copy), **Save as New** (keep the Catalog's copy; your concert switches to a new copy of the Scene), or **Skip** (the default). Master Patches whose Multis differ are listed too, with Replace or Skip.
-- Right-click a Scene to push just that one; the menu says what will happen (**Push to Catalog (New)**, **Replace in Catalog**, or **Catalog Is Up to Date**).
+- **One name, one Scene.** The Catalog keeps one Scene per name. Pushing a Scene whose name is already in the Catalog asks to **Replace** it (or Cancel) instead of adding a second copy.
+- **Push All…** adds every NEW Scene, then lists each CHANGED Scene with both dates so you can choose **Replace** (overwrite the Catalog's copy) or **Skip** (the default). A Scene you renamed in the concert also offers **Save as New**. To keep both versions of any other Scene, Skip it here and use **Save as New Scene…** on its right-click menu. Master Patches whose Multis differ are listed too, with Replace or Skip.
+- Right-click a Scene to push just that one; the menu says what will happen (**Push to Catalog (New)**, **Replace in Catalog**, or **Catalog Is Up to Date**). The same menu has **Refresh from Catalog…**, which brings the Catalog's copy into your concert (your concert keeps its own Master Patch), and **Save as New Scene…**, which needs a name not already in the Catalog.
+- The Library and the inspector show when each copy was last edited and which is newer, and every prompt warns before an older copy replaces a newer one.
 - Every Catalog save keeps a backup copy first, in the `backups` folder of your data folder.
 - Scenes remember when their content last changed. Scenes saved before 0.3.2 show *unknown* until you next edit them.
 
@@ -105,6 +123,46 @@ Buttons default to **Toggle** (latching) behavior. Flip a button to **Momentary*
 
 Moving a scene to a new state can leave a physical (non-motorized) fader pointing at the wrong value. **Soft Takeover** prevents the jump: in **Pickup** mode the fader has to physically cross the current value before it takes control again; in **Proportional** mode it scales your movement so it catches up smoothly instead.
 
+### 🎛️ Fine Moves on Hardware Knobs
+
+Knobs with end stops, like those on the Launch Control XL Mk2, cover the full MIDI range of **128 values (0–127)** in less than one full turn, so each value is only a few degrees of travel. Two things follow:
+
+- **A slow, small turn changes the value 1 point at a time.** That is already the finest step MIDI allows, so fine-tuning is a matter of moving slowly and watching the value on the Mac or iPad.
+- **A fast turn can skip values.** The knob reports where it is, not every value in between. That is normal, and it is what makes a quick sweep feel quick.
+
+MIDI Assistant does not speed up or slow down your knob movements automatically, the way a computer mouse does. A mouse can do that because you can lift it and put it down again. A knob with end stops can't be lifted, so if the app scaled your movement, the knob would reach its end stop before the value reached its end.
+
+### 🥁 Tempo on the Fly: Tap, Enter, Override
+
+The band leader calls a medley, or the drummer pushes the tempo, and the song needs a tempo that isn't the one saved in its Scene. The **tempo cluster**, at the right of the Matrix on the Mac Mixer and the iPad's Mixer layout, gives you that tempo for as long as you need it. **It never changes your Scenes.**
+
+**Nothing plays until you press OVERRIDE.** Tapping or entering a tempo only gets it ready. The pad's colour tells you where you are: **white** = the Scene's tempo, **amber** = a tempo waiting (not playing yet), **green** = your tempo is playing.
+
+- **Tap it.** Tap the pad in time. A tempo appears after three taps, so a stray touch changes nothing. If you don't use it within 30 seconds, it goes away.
+- **Enter it.** When you know the number, **press and hold** the pad. On the iPad a keypad opens (decimals allowed, no computer keyboard needed); on the Mac, a number field. With a Launch Control XL, the **right-most knob of the bottom row** dials it, 1 BPM per click (2 per click on a big turn). A short tap on the pad, or **SET**, keeps the number; **CLEAR TAP** or **CANCEL** discards it.
+- **Play it.** **OVERRIDE** always says what it will do: **PLAY 96** plays a waiting tempo; **ON** means your tempo is playing, and pressing it returns to the Scene's tempo at once.
+- **Keep it, or not.** **FROZEN** (the default) keeps your tempo through every song change until you turn OVERRIDE off; the pad flashes briefly at each song change to remind you. **UNTIL NEXT SCENE** lets it go at the next song. **HOLD** keeps a waiting tempo ready without playing it.
+- **Line up the next one (TAKE).** While your tempo is playing, enter another one: it waits as **NEXT 124**, and OVERRIDE reads **TAKE 124**. In FROZEN it plays when you press TAKE, on cue. In UNTIL NEXT SCENE it plays by itself when the next song starts. Changed your mind? One press of **CLEAR TAP** drops it.
+- **Put it under your hands.** Any Matrix button, and through Controller Masks any Launch Control XL button, can be a Tap Tempo, Tempo Override, Hold / Frozen, Clear Tap or Clock button (Control Editor → Magic Wand → **Transport**). Holding a mapped Tap Tempo button opens Tempo Entry too, and on the XL the Override button flashes when a tempo is waiting.
+
+MainStage follows the new tempo through MIDI clock. Set MainStage to follow external clock, choose the port in **Settings → Clock → Clock Output Port**, and press **CLOCK** so it reads **RUNNING**.
+
+### 👀 Look, Don't Leap
+
+Want to check what's coming without moving the song? Tap **MUTE** (on the Mixer's mode strip, Mac or iPad, or on the Launch Control XL). The arrows now move an orange **LOOK** highlight, and the Mac and iPad show the highlighted Scene with all its Sections. Tap **MUTE** again to jump there, once. **DEVICE**, or 30 seconds without a press, cancels. Your foot pedal keeps working while you look.
+
+### 🎛️ The Launch Control XL
+
+A Novation Launch Control XL can drive MIDI Assistant's Mixer directly, with lights that follow the app.
+
+- **Two templates, two jobs.** **User 8** belongs to MIDI Assistant. **User 2** goes straight to MainStage, as before. The Concert Pack's MIDI Assistant example concert switches the XL to User 8 when it opens.
+- **Set up once:** send the Concert Pack's **User 8** template to the XL with Novation Components. Then let **Help → Export MainStage Concert Pack…** install the XL's controller file, and relaunch MIDI Assistant. Start from the Pack's example concert (or **Save As** from it): it holds the XL's Main Mixer layout.
+- **On the Main Mixer:** faders, knobs and the two button rows move the Mixer's faders, knobs and Matrix. The arrows change Scene and Section. Controls pick up smoothly, without jumping a value. Lights: bright = on, dim = off, dark = does nothing here.
+- **Sub-Screens:** press a column's **Top and Bottom** buttons together to open that fader's Sub-Screen, and again for its next one. The knobs and buttons then drive that screen. **DEVICE** switches between the screen and the Main Mixer. **SOLO** steps through the screen's extra layers.
+- **Keep live controls on the first layer.** SOLO layers are for rehearsal changes and building. If you run out of buttons for a live part, open the **Top row** in Controller Masks instead.
+- **Controller Masks** (**Tools → Controller Masks...**) shows what every XL control does on each Sub-Screen and lets you change it. The easiest kind of assignment is a **Job**, such as *Plugin Enable*: one button that switches the plugin on or off on whichever plugin's screen is open.
+- **Reposition:** a knob at its end stop with nowhere to go? Press **Bottom 7 + 8** together; they flash. Move the knob where you want it: nothing is sent. About a second after you stop, it picks up again from there, without a jump.
+
 ### 🎹 MIDI Channels and Velocity, per Instrument
 
 Each channel in the **Performance Hub** has two small controls next to its key range:
@@ -127,7 +185,7 @@ The same applies when you switch a channel between **App mode** (shown as **Hub 
 ### What You'll Need
 
 1. **MIDI Assistant** installed on your Mac (macOS 13 or later)
-2. **MainStage**, with the MIDI Assistant AUv3 plugin loaded on a channel strip (Host FX Mode) if you want sample-accurate in-host control
+2. **MainStage**, with the **MidiAssistant Enhanced** AUv3 plugin on each channel strip MIDI Assistant plays (the Concert Pack's MainStage concert is set up this way)
 3. **MIDI Assistant Remote** on your iPad, on the same local network as your Mac
 4. **Your controllers** (Lemur, Launch Control XL, hardware keyboards, etc.)
 
@@ -163,7 +221,7 @@ The Mixer layout's toolbar has the same two rig buttons as the Mac Mixer:
 
 ### Faders
 
-- **Slide** to move a fader. A **tap or double-tap** on a fader never changes its value — it only selects the fader (yellow label) for the nudge buttons.
+- **Slide** to move a fader. A **tap or double-tap** on a fader never changes its value — it only selects the fader (yellow label) for the nudge buttons. The nudge buttons sit behind the switch at the top of the mode strip: **+ / −** shows them, **MODES** goes back to DEVICE / MUTE / SOLO (it also goes back by itself after 10 seconds).
 - **Double-tap the name label** under a fader to open its Sub-Screen; **press and hold** the label for the list of Sub-Screens.
 
 ### Sub-Screens that open themselves
@@ -219,6 +277,20 @@ A ramp always starts from the fader's *real* current position — it can't jump,
 
 If the Setlist says *Catalog: N new · M changed*, press **Push All…** before you leave — that's your library catching up with tonight's work.
 
+### 7. Change Heavy Effect Presets in Three Quick Steps
+
+Changing presets on a heavy effect plug-in, such as the BigSky reverb, while it is running can make MainStage show a **System Overload**. To avoid that, give the Section three events, each with its own **Delay Offset** (in the Event Editor):
+
+| Delay Offset | Event |
+|---|---|
+| 0 ms | Turn the plug-in **off** (its Enabled / bypass control) |
+| 10–20 ms later | Send the **preset change** |
+| 10–20 ms after that | Turn the plug-in back **on** |
+
+For example: off at 0 ms, preset at 20 ms, on at 40 ms. The whole change is over within about 60 ms, too quickly to hear, and MainStage shows no overload.
+
+**Save the MainStage patch with the plug-in disabled.** Loading the concert then doesn't load the heavy plug-in in its running state. Your Section events switch it on when the song needs it.
+
 ---
 
 ## Troubleshooting
@@ -248,6 +320,34 @@ If the Setlist says *Catalog: N new · M changed*, press **Push All…** before 
 
 - Press **Sync** (Mac or iPad). MIDI Assistant deliberately holds MainStage's burst of values at load and patch changes; Sync applies them.
 
+### "MainStage shows a System Overload when a Section changes a BigSky preset"
+
+- The preset changed while the plug-in was running. Turn the plug-in off, change the preset, then turn it back on, 10–20 ms apart (see **Tips from the Stage → 7**). Also save the MainStage patch with the plug-in disabled.
+
+### "MainStage says *Plug-in may cause audio delay* every time the concert loads"
+
+- This appears when **P-Shift** is enabled in the MainStage concert. It reports a delay of about 80 ms. You can generally ignore the message, but whether that delay is acceptable is your call.
+
+### "The Launch Control XL does nothing in MIDI Assistant"
+
+- Check the XL is on its **User 8** template (the Pack's MIDI Assistant example concert selects it when it opens).
+- The XL's controller file must be installed (**Help → Export MainStage Concert Pack…** → Install), and MIDI Assistant relaunched afterwards.
+- On the Main Mixer, the concert must hold the XL layout: use the Pack's example concert or a concert saved from it.
+
+### "A Performance Hub switch is greyed out" / "my controller isn't in the Redirect list"
+
+- A channel that belongs to your MIDI Routing (for example USB Sync In) is switched on and off in the **MIDI Routing** window; in the Performance Hub its switch is read-only ("Set in Midi Routing: this port is part of the rig's wiring.").
+- **Redirect** is for keyboards. A controller whose MIDI Routing ports are marked **Hide from Perf. Hub** (a Launch Control XL, a Lemur) is not listed, and only hardware ports are offered as targets.
+
+### "MainStage says MidiAssistant Standard is unavailable"
+
+- Since 0.3.3 only **MidiAssistant Enhanced** ships. Replace Standard with Enhanced on that channel strip. If MainStage still lists Standard, quit MainStage and open it again so it rescans its plug-ins.
+
+### "I pressed OVERRIDE but MainStage's tempo didn't change"
+
+- MainStage hears the new tempo only through MIDI clock. Check that **CLOCK** reads **RUNNING**, that **Settings → Clock → Clock Output Port** names the port MainStage listens on (a change there needs a relaunch), and that MainStage is set to follow external clock.
+- If the pad is **amber**, the tempo is still waiting: OVERRIDE reads **PLAY** or **TAKE**, and a press plays it.
+
 ### "I set a Multi on the Master Patch but a Scene still shows the old one"
 
 - That Scene has its own value, which overrides. In the Scene inspector pick **Master Patch (…)** for that fader, or press **Clear Scene Overrides…** in the Master Patch inspector.
@@ -272,7 +372,14 @@ If the Setlist says *Catalog: N new · M changed*, press **Push All…** before 
 | **Legato Engine** | Keeps a sustained chord alive across a scene change until it's released. |
 | **Catalog** | Your library of Scenes, Master Patches and Presets, shared between concerts. |
 | **Multi** | The named set of instruments loaded under one Mixer fader (e.g. an Omnisphere Multi). Set on the Master Patch; a Scene may override. |
-| **Override** | A value stored on a Scene that takes the place of its Master Patch's. |
+| **Override** | A value stored on a Scene that takes the place of its Master Patch's. (Not the same as **Tempo Override**.) |
+| **Tempo Override** | A tempo from the tempo cluster that plays in place of the Scenes' saved tempos until you turn it off. It never changes a Scene. |
+| **Tempo Entry** | Hold the tempo pad to type or dial an exact tempo instead of tapping it. |
+| **TAKE** | What OVERRIDE reads while one tempo plays and the next one waits: press it to play the waiting tempo. |
+| **Controller Masks** | What each Launch Control XL control does: on the Main Mixer (stored in the concert) and on each Sub-Screen (your rig's roles, edited in Tools → Controller Masks). |
+| **Role / Job** | A role tells an XL knob or button which control to drive on a Sub-Screen. A **Job** is a role that works on every screen with that kind of control, such as *Plugin Enable*. |
+| **SOLO layer** | An extra set of XL assignments for a Sub-Screen, reached with SOLO. For rehearsal and building; live controls stay on the first layer. |
+| **Reposition** | Bottom 7 + 8 on the XL: move knobs and faders without sending anything, so they line up again. |
 | **App mode / Host FX** | Where a Performance Hub channel's processing runs: in the Mac app (shown as **Hub Processing**) or in the plugin inside MainStage. |
 | **Compress** | Scales every note's velocity into a Low–High range after the Velocity Curve. |
 
@@ -281,7 +388,7 @@ If the Setlist says *Catalog: N new · M changed*, press **Push All…** before 
 ## Need Help?
 
 - See the [Technical Overview](MIDI_ASSISTANT_TECHNICAL_OVERVIEW.md) for architecture details.
-- Visit the [Support page](support.html) for common issues and to contact the developer.
+- Visit the [Support page](support.html) for common issues, or email **support@midiassistant.com**.
 
 ---
 
