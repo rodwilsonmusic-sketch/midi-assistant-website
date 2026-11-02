@@ -26,16 +26,19 @@
 | | What changed |
 | --- | --- |
 | 🥁 **Tap, enter and override a tempo** | A tempo cluster on the Mac and iPad Mixer: tap a tempo, or hold the pad to type or dial an exact one, then **OVERRIDE** plays it in place of the Scenes' tempos. While one plays, line up the next with **TAKE**. See **Tempo on the Fly**. |
-| 🎛️ **Launch Control XL drives the Mixer** | The XL's **User 8** template moves the Mixer's faders, knobs and Matrix with soft pickup, its lights follow the app, and a two-button push opens a fader's Sub-Screen. See **The Launch Control XL**. |
-| 🗺️ **Controller Masks** | **Tools → Controller Masks...** shows what every XL control does on each Sub-Screen and lets you change it: one **Job** button (such as *Enable*) for every plugin, SOLO layers for rehearsal, and an optional Top row for more live buttons. |
-| ↕️ **Reposition** | Knob stuck at its end stop? Press **Bottom 7 + 8** on the XL, move it where you want; nothing is sent, and it picks up again with no jump. |
+| 🎛️ **Launch Control XL drives the Mixer** | The XL's **User 8** template moves the Mixer's faders, knobs and Matrix with soft pickup, its lights follow the app, and a two-button push opens a fader's Sub-Screen. See **Hardware Controllers**. |
+| 🎚️ **Korg nanoKONTROL2 too** | The nanoKONTROL2 drives the Mixer the same way: **S** opens a fader's Sub-Screen with one press, the transport buttons browse, focus and step layers, and its lights show what each button does. **Use this controller** in Controller Masks switches between the XL and the nano at once, no restart. See **Hardware Controllers**. |
+| 🗺️ **Controller Masks** | **Tools → Controller Masks...** shows what every controller control does on each Sub-Screen and lets you change it, drawn with the controller's own rows: one **Job** button (such as *Enable*) for every plugin, SOLO layers for rehearsal, an optional Top row on the XL, and Main Mixer layers saved with the concert. |
+| 📄 **Page buttons** | On Mainstage Pads, Mainstage Synths and InstrGroup, a button can show a slot's page: map it to the slot fader (M1 → Sampler) and the press shows that page. A **▸** watermark marks it. |
+| 🎹 **Drone keys from buttons** | **+Oct**, **−Oct** and **ALL CLEAR** on any free button, always lit, with their watermarks just above the keyboard. |
+| ↕️ **Reposition** | Knob stuck at its end stop? Press **Bottom 7 + 8** on the XL (**R7 + R8** on the nano), move it where you want; nothing is sent, and it picks up again with no jump. |
 | 👀 **Look, don't leap** | Tap **MUTE** to browse Scenes and Sections without moving the song; tap it again to jump once. |
 | 📚 **One name, one Scene in the Catalog** | Pushing a Scene whose name is already in the Catalog asks to **Replace**, and **Refresh from Catalog…** brings the Catalog's copy back. Every prompt warns before an older copy replaces a newer one. |
 | ⚠️ **Duplicate events shown** | The event list flags a Section that sets the same control twice (red when the values fight). Saving a capture into a Section asks before adding a second event for the same control. |
 | 🔌 **Start in any order** | Each plugin gets its settings a few seconds after MainStage loads it, so starting MainStage after MIDI Assistant no longer needs Restart UDP. |
 | 🎹 **Redirect is for keyboards** | The Hardware Redirector lists only keyboards and asks before redirecting. Your MIDI Routing always decides which controllers feed its ports; a concert can no longer cut one off. |
 | 🧩 **One plugin** | **MidiAssistant Enhanced** is the only AUv3 plugin. Replace any "MidiAssistant Standard" left in a MainStage concert with Enhanced. |
-| 📦 **Concert Pack 1.3** | An updated MainStage concert and example concert, the XL's **User 8** template beside User 2, and the XL's controller file. **Help → Export MainStage Concert Pack…** exports the pack and offers to install the example concert and the controller file; the templates go into the XL with Novation Components. |
+| 📦 **Concert Pack 1.4** | An updated MainStage concert and example concert, the XL's **User 8** template beside User 2, and the controller file for the XL and the nanoKONTROL2. **Help → Export MainStage Concert Pack…** exports the pack and offers to install the example concert and the controller file; the templates go into the XL with Novation Components. |
 
 ## New in 0.3.2
 
@@ -151,9 +154,13 @@ MainStage follows the new tempo through MIDI clock. Set MainStage to follow exte
 
 Want to check what's coming without moving the song? Tap **MUTE** (on the Mixer's mode strip, Mac or iPad, or on the Launch Control XL). The arrows now move an orange **LOOK** highlight, and the Mac and iPad show the highlighted Scene with all its Sections. Tap **MUTE** again to jump there, once. **DEVICE**, or 30 seconds without a press, cancels. Your foot pedal keeps working while you look.
 
-### 🎛️ The Launch Control XL
+### 🎛️ Hardware Controllers
 
-A Novation Launch Control XL can drive MIDI Assistant's Mixer directly, with lights that follow the app.
+A Novation Launch Control XL or a Korg nanoKONTROL2 can drive MIDI Assistant's Mixer directly, with lights that follow
+the app. Pick the one you use in **Tools → Controller Masks...** → **Use this controller** (the other is parked; switching
+needs no restart).
+
+**The Launch Control XL**
 
 - **Two templates, two jobs.** **User 8** belongs to MIDI Assistant. **User 2** goes straight to MainStage, as before. The Concert Pack's MIDI Assistant example concert switches the XL to User 8 when it opens.
 - **Set up once:** send the Concert Pack's **User 8** template to the XL with Novation Components. Then let **Help → Export MainStage Concert Pack…** install the XL's controller file, and relaunch MIDI Assistant. Start from the Pack's example concert (or **Save As** from it): it holds the XL's Main Mixer layout.
@@ -162,6 +169,18 @@ A Novation Launch Control XL can drive MIDI Assistant's Mixer directly, with lig
 - **Keep live controls on the first layer.** SOLO layers are for rehearsal changes and building. If you run out of buttons for a live part, open the **Top row** in Controller Masks instead.
 - **Controller Masks** (**Tools → Controller Masks...**) shows what every XL control does on each Sub-Screen and lets you change it. The easiest kind of assignment is a **Job**, such as *Plugin Enable*: one button that switches the plugin on or off on whichever plugin's screen is open.
 - **Reposition:** a knob at its end stop with nowhere to go? Press **Bottom 7 + 8** together; they flash. Move the knob where you want it: nothing is sent. About a second after you stop, it picks up again from there, without a jump.
+
+**The nanoKONTROL2**
+
+- **Set up once:** keep the nano's factory layout, and in the **KORG KONTROL Editor** set **LED Mode = External** (Browse → Common), then Write Scene Data, so the app lights its buttons. Then tick **Use this controller** for it.
+- **S** opens a fader's Sub-Screen with one press. **Play** switches between the screen and the Main Mixer, **◀◀ / ▶▶** step the layers back and forward, **Cycle** browses ("Look, don't leap"; **Stop** cancels), **Track** and **Marker** change Scene and Section, and **R7 + R8** is Reposition.
+- Lights are on or off: a lit S / M / R button does something on this screen; **S** shows where you are.
+
+**Both**
+
+- **Watermarks** on the Mac and iPad show which controller control drives each control. The **eye** cycles Off → Faint → Clear (clear for building).
+- **Page buttons:** on screens that change page from their faders (Mainstage Pads), map a button to the slot fader and its press shows that page. The lit button is the page showing; a **▸** watermark marks it.
+- **Drone keys:** put **+Oct**, **−Oct** and **ALL CLEAR** on free buttons; they stay lit, and their watermarks sit just above the keyboard.
 
 ### 🎹 MIDI Channels and Velocity, per Instrument
 
@@ -333,6 +352,12 @@ For example: off at 0 ms, preset at 20 ms, on at 40 ms. The whole change is over
 - Check the XL is on its **User 8** template (the Pack's MIDI Assistant example concert selects it when it opens).
 - The XL's controller file must be installed (**Help → Export MainStage Concert Pack…** → Install), and MIDI Assistant relaunched afterwards.
 - On the Main Mixer, the concert must hold the XL layout: use the Pack's example concert or a concert saved from it.
+- If you switched to the nanoKONTROL2 earlier, the XL is **parked**: **Tools → Controller Masks...** → Device: Launch Control XL → **Use this controller**.
+
+### "The nanoKONTROL2 does nothing" / "its buttons stay dark"
+
+- The nano ships **parked**: **Tools → Controller Masks...** → Device: nanoKONTROL2 → **Use this controller**. If it is not in the Device list, your controller file came from an older Concert Pack (XL only): export the Pack again and choose **Replace** for the controller file (yours is backed up first), then relaunch.
+- It moves the Mixer but the buttons stay dark: **LED Mode = External** was not written to the nano (KORG KONTROL Editor → Browse → Common, then Write Scene Data). Dark buttons while MIDI Assistant is not running are expected.
 
 ### "A Performance Hub switch is greyed out" / "my controller isn't in the Redirect list"
 
