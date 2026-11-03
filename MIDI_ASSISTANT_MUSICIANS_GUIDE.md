@@ -23,6 +23,8 @@
 
 ## What's New in 0.3.3
 
+**The Mac app 0.3.3 is out now. The iPad parts of these changes arrive with iPad Remote 0.3.3, which is in App Review.** Those are the iPad's tempo cluster and keypad, the LOOK highlight, the DEVICE / MUTE / SOLO strip, watermarks and page buttons.
+
 | | What changed |
 | --- | --- |
 | 🥁 **Tap, enter and override a tempo** | A tempo cluster on the Mac and iPad Mixer: tap a tempo, or hold the pad to type or dial an exact one, then **OVERRIDE** plays it in place of the Scenes' tempos. While one plays, line up the next with **TAKE**. See **Tempo on the Fly**. |
